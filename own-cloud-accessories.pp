@@ -28,6 +28,11 @@ package { 'sendmail':
     ensure => latest,
 }
 
+package{ 'office package':
+    name => 'libreoffice',
+    ensure => latest,
+}
+
 #
 # Antivirus part
 #
