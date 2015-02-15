@@ -1,0 +1,6 @@
+---
+timezone::timezone: Europe/Prague
+fail2ban::jails:
+  - "ssh"
+fail2ban::email: fail2ban@your-domain.com
+mysql::server::restart: true

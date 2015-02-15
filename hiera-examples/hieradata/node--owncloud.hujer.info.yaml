@@ -1,0 +1,7 @@
+---
+mysql::server::root_password: superstrongpassword
+owncloud::db_user: owncloud
+owncloud::db_pass: owcnloud_db_password
+owncloud::ssl: true
+owncloud::ssl_cert: /etc/apache2/ssl/owncloud.yourdomain.com.crt
+owncloud::ssl_key: /etc/apache2/ssl/owncloud.yourdomain.com.key
