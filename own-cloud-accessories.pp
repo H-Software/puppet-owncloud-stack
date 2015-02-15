@@ -69,9 +69,14 @@ service {'cron':
     ensure      => "true",                     # true (running), false (stopped)
     name        => $service_name,
     require     => Package['cron'],
-    subscribe	=> File['/etc/init.d/cron.d/owncloud'],
+    subscribe	=> File['owcnloud cron file'],
 }
 
-file { '/etc/init.d/cron.d/owncloud':
-    content => "*/15  *  *  *  * www-data php -f /var/www/owncloud/cron.php > /dev/null 2>&1",
+$cron_file_owncloud = "*/15  *  *  *  * www-data php -f /var/www/owncloud/cron.php > /dev/null 2>&1
+"
+
+file { 'owcnloud cron file':
+    name => '/etc/cron.d/owncloud',
+    content => $cron_file_owncloud,
+    require => Package["cron"],
 }
