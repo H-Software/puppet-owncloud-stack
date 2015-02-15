@@ -8,7 +8,7 @@
 #							#
 #########################################################
 
-import own-cloud-system.pp
+import 'own-cloud-system.pp'
 
 class { '::mysql::server':
   override_options => {
@@ -25,4 +25,4 @@ class { 'owncloud':
   ssl_key  => '/etc/apache2/ssl/owncloud.hujer.info.key'
 }
 
-import own-cloud-accessories.pp
+import 'own-cloud-accessories.pp'
