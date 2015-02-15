@@ -28,6 +28,10 @@ package { 'sendmail':
     ensure => latest,
 }
 
+#
+# Antivirus part
+#
+
 $packages_clamav = ["clamav", "clamav-base", "clamav-daemon", "clamav-freshclam"]
 
 package { $packages_clamav:
@@ -47,4 +51,27 @@ service { 'clamav-daemon':
 		Package[$packages_clamav],
 		Service["clamav-freshclam"],
 	       ]
+}
+
+#
+# Cron part
+#
+$package_name = 'cron' 
+$service_name = 'cron'
+
+package {'cron':
+    ensure      => 'present',
+    name        => $package_name,
+}
+
+service {'cron':
+    enable      => "true",                     # true (start on boot)
+    ensure      => "true",                     # true (running), false (stopped)
+    name        => $service_name,
+    require     => Package['cron'],
+    subscribe	=> File['/etc/init.d/cron.d/owncloud'],
+}
+
+file { '/etc/init.d/cron.d/owncloud':
+    content => "*/15  *  *  *  * www-data php -f /var/www/owncloud/cron.php > /dev/null 2>&1",
 }
