@@ -1,6 +1,6 @@
 #########################################################
 #							#
-# OwnCLoud manifest					#
+# OwnCLoud manifest - main part				#
 #							#
 # create by czhujer (patrik.majer.pisek@gmail.com 	#
 #							#
