@@ -19,11 +19,6 @@ class { 'fail2ban':
   require => Package['sendmail'],
 }
 
-package { 'sendmail':
-    name => 'sendmail-bin',
-    ensure => latest,
-}
-
 package{ 'office package':
     name => 'libreoffice',
     ensure => latest,
