@@ -16,6 +16,9 @@ class { 'mysql::server':
   },
 }
 
+class { 'sendmail': 
+}
+
 class { 'owncloud': 
 }
 
