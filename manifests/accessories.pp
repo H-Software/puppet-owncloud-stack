@@ -36,8 +36,16 @@ service { 'clamav-daemon':
 #
 # Cron part
 #
-$package_name = 'cron' 
-$service_name = 'cron'
+
+if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::operatingsystemrelease < 7) {
+  $package_name = 'cronie'
+  $service_name = 'crond'
+}
+else
+{
+  $package_name = 'cron' 
+  $service_name = 'cron'
+}
 
 package {'cron':
     ensure      => 'present',
