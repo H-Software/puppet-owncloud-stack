@@ -32,6 +32,23 @@ if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::oper
     ensure => "latest",
   }
 
+  ini_setting { 'centos base repo exclude php packages':
+    ensure  => present,
+    path    => "/etc/yum.repos.d/CentOS-Base.repo",
+    section => 'base',
+    setting => 'exclude',
+    value   => "php-*",
+  }
+
+  ini_setting { 'centos base repo exclude php packages2':
+    ensure  => present,
+    path    => "/etc/yum.repos.d/CentOS-Base.repo",
+    section => 'updates',
+    setting => 'exclude',
+    value   => "php-*",
+    require => Ini_setting["'centos base repo exclude php packages"],
+  }
+
   if ! defined(Yumrepo['remi-php56']){
 
     yumrepo { 'remi-php56':
@@ -43,7 +60,7 @@ if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::oper
             gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
             enabled    => 1,
             before     => Class["owncloud"],
-            require    => Class['::remi']
+            require    => [ Class['::remi'], Ini_setting["'centos base repo exclude php packages2"], ]
     }
 
   }
