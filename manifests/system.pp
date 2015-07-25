@@ -26,15 +26,26 @@ if($::operatingsystem == "ubuntu") {
 
 if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::operatingsystemrelease < 7) {
 
+  include ::remi
+
   package { "epel-release":
     ensure => "latest",
   }
 
-  package { "ius-release":
-    ensure => "installed",
-    provider => 'rpm',
-    source => 'http://dl.iuscommunity.org/pub/ius/archive/CentOS/6/x86_64/ius-release-1.0-11.ius.centos6.noarch.rpm',
-    require => Package["epel-release"],
+  if ! defined(Yumrepo['remi-php56']){
+
+    yumrepo { 'remi-php56':
+            name       => 'remi-php56',
+            descr      => 'Les RPM de remi de PHP 5.6 pour Enterprise Linux 6 - $basearch',
+            baseurl    => absent,
+            mirrorlist => 'http://rpms.famillecollet.com/enterprise/6/php56/mirror',
+            gpgcheck   => 1,
+            gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
+            enabled    => 1,
+            before     => Package[$::owncloud::package_name],
+            require    => Class['::remi']
+    }
+
   }
 
 }
