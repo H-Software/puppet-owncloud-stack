@@ -19,18 +19,7 @@ class { 'mysql::server':
 class { 'sendmail': 
 }
 
-if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::operatingsystemrelease < 7) {
-
-  class { 'owncloud': 
-    require => Yumrepo["remi-php56"],
-  }
-
-}
-else{
-
-  class { 'owncloud': 
-  }
-
+class { 'owncloud': 
 }
 
 import 'accessories.pp'

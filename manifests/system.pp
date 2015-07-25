@@ -42,7 +42,7 @@ if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::oper
             gpgcheck   => 1,
             gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
             enabled    => 1,
-            before     => Package[$::owncloud::package_name],
+            before     => Class["owncloud"],
             require    => Class['::remi']
     }
 
