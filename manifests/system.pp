@@ -46,7 +46,7 @@ if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::oper
     section => 'updates',
     setting => 'exclude',
     value   => "php-*",
-    require => Ini_setting["'centos base repo exclude php packages"],
+    require => Ini_setting["centos base repo exclude php packages"],
   }
 
   if ! defined(Yumrepo['remi-php56']){
@@ -60,7 +60,7 @@ if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::oper
             gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
             enabled    => 1,
             before     => Class["owncloud"],
-            require    => [ Class['::remi'], Ini_setting["'centos base repo exclude php packages2"], ]
+            require    => [ Class['::remi'], Ini_setting["centos base repo exclude php packages2"], ]
     }
 
   }
