@@ -22,7 +22,7 @@ class { 'sendmail':
 if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::operatingsystemrelease < 7) {
 
   class { 'owncloud': 
-    require => Package["ius-release"],
+    require => Yumrepo["remi-php56"],
   }
 
 }
