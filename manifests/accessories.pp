@@ -12,7 +12,14 @@
 # Antivirus part
 #
 
-$packages_clamav = ["clamav", "clamav-base", "clamav-daemon", "clamav-freshclam"]
+if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::operatingsystemrelease < 7) {
+  $packages_clamav = ["clamav", "clamd", "clamav-db"]
+  $service_clamav = "clamd"
+}
+else{
+  $packages_clamav = ["clamav", "clamav-base", "clamav-daemon", "clamav-freshclam"]
+  $service_clamav = "clamav-freshclam"
+}
 
 package { $packages_clamav:
     ensure => latest,
@@ -25,12 +32,10 @@ service { 'clamav-freshclam':
 }
 
 service { 'clamav-daemon':
+    name   => $service_clamav,
     ensure => running,
     enable => true,
-    require => [ 
-		Package[$packages_clamav],
-		Service["clamav-freshclam"],
-	       ]
+    require => Package[$packages_clamav],
 }
 
 #
