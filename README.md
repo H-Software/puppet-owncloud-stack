@@ -2,6 +2,7 @@
 puppet module for OwnCloud Stack
 
 tested on Ubuntu 12.04 LTS
+tested on Centos 6.6 x64_64
 
 ### Authors
 

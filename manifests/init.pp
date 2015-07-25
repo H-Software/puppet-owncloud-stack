@@ -2,9 +2,9 @@
 #							#
 # OwnCLoud manifest - main part				#
 #							#
-# create by czhujer (patrik.majer.pisek@gmail.com 	#
+# create by czhujer (patrik.majer.pisek@gmail.com) 	#
 #							#
-# version: 0.1						#	
+# version: 0.2						#
 #							#
 #########################################################
 
