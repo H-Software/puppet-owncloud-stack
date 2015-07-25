@@ -19,7 +19,18 @@ class { 'mysql::server':
 class { 'sendmail': 
 }
 
-class { 'owncloud': 
+if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::operatingsystemrelease < 7) {
+
+  class { 'owncloud': 
+    require => Package["ius-release"],
+  }
+
+}
+else{
+
+  class { 'owncloud': 
+  }
+
 }
 
 import 'accessories.pp'
