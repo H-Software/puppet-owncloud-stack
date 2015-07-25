@@ -44,6 +44,12 @@ linux# puppet module install example42-sendmail
 linux# cd /etc/puppet/modules; git clone https://github.com/czhujer/puppet-owncloud-stack.git; mv puppet-owncloud-stack/ owncloud-stack/;
 ```
 
+** on CentOS - install next module(s)
+
+```
+linux# puppet module install --ignore-dependencies ckhall-remi
+```
+
 ### Using
 
 * set hiera data
