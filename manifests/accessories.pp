@@ -25,10 +25,14 @@ package { $packages_clamav:
     ensure => latest,
 }
 
-service { 'clamav-freshclam':
-    ensure => running,
-    enable => true,
-    require => Package[$packages_clamav],
+if($::operatingsystem == "ubuntu") {
+
+  service { 'clamav-freshclam':
+      ensure => running,
+      enable => true,
+      require => Package[$packages_clamav],
+  }
+
 }
 
 service { 'clamav-daemon':
