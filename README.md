@@ -48,6 +48,7 @@ linux# cd /etc/puppet/modules; git clone https://github.com/czhujer/puppet-owncl
 
 ```
 linux# puppet module install --ignore-dependencies ckhall-remi
+linux# puppet module install puppetlabs-inifile
 ```
 
 ### Using
