@@ -68,7 +68,7 @@ class owncloudstack::system ()
 
     }
 
-    #repos for owncloud 8.2
+    # changes for owncloud 8.2
     #
     if ($owncloudstack::owncloud_version == '8.2'){
 
@@ -103,6 +103,21 @@ class owncloudstack::system ()
             enabled    => 1,
             before     => Class["owncloud"],
             require    => [ Class['::remi'], Ini_setting["centos base repo exclude php packages2"], ]
+      }
+
+      #packages
+      package { " rhscl httpd24 epel repo pkg":
+         provider  => rpm,
+         ensure    => "installed",
+         source    => "https://www.softwarecollections.org/en/scls/rhscl/httpd24/epel-6-x86_64/download/rhscl-httpd24-epel-6-x86_64.noarch.rpm",
+         before    => Class["owncloud"],
+      }
+
+      package { " rhscl php56 epel repo pkg":
+         provider  => rpm,
+         ensure    => "installed",
+         source    => "https://www.softwarecollections.org/en/scls/rhscl/rh-php56/epel-6-x86_64/download/rhscl-rh-php56-epel-6-x86_64.noarch.rpm",
+         before    => Class["owncloud"],
       }
 
 
