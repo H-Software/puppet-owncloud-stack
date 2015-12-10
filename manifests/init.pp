@@ -36,7 +36,7 @@ $owncloud_version="8",
       manage_repo => $owncloud_version,
   }
 
-  class{ 'owncloudstack::services'
+  class{ 'owncloudstack::services':
   }
 
 }
