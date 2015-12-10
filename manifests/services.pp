@@ -8,7 +8,7 @@
 #							#
 #########################################################
 
-owncloudstack::services ()
+class owncloudstack::services ()
 {
 
   #
