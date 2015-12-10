@@ -106,14 +106,14 @@ class owncloudstack::system ()
       }
 
       #packages
-      package { " rhscl httpd24 epel repo pkg":
+      package { 'rhscl-httpd24-epel-6-x86_64':
          provider  => rpm,
          ensure    => "installed",
          source    => "https://www.softwarecollections.org/en/scls/rhscl/httpd24/epel-6-x86_64/download/rhscl-httpd24-epel-6-x86_64.noarch.rpm",
          before    => Class["owncloud"],
       }
 
-      package { " rhscl php56 epel repo pkg":
+      package { 'rhscl-rh-php56-epel-6-x86_64':
          provider  => rpm,
          ensure    => "installed",
          source    => "https://www.softwarecollections.org/en/scls/rhscl/rh-php56/epel-6-x86_64/download/rhscl-rh-php56-epel-6-x86_64.noarch.rpm",
