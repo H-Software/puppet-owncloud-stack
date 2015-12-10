@@ -72,8 +72,7 @@ owncloudstack::services ()
     subscribe	=> File['owcnloud cron file'],
   }
 
-  $cron_file_owncloud = "*/15  *  *  *  * www-data php -f /var/www/owncloud/cron.php > /dev/null 2>&1
-  "
+  $cron_file_owncloud = "*/15  *  *  *  * www-data php -f /var/www/owncloud/cron.php > /dev/null 2>&1\n"
 
   file { 'owcnloud cron file':
     name => '/etc/cron.d/owncloud',
