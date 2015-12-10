@@ -68,6 +68,46 @@ class owncloudstack::system ()
 
     }
 
+    #repos for owncloud 8.2
+    #
+    if ($owncloudstack::owncloud_version == '8.2'){
+
+      if ! defined(Yumrepo['isv_ownCloud_community']){
+
+        yumrepo { 'isv_ownCloud_community':
+            name       => 'isv_ownCloud_community',
+            enabled    => 0,
+            before     => Class["owncloud"],
+        }
+
+      }
+      else{
+
+          ini_setting { 'disable repo owncloud community':
+             ensure  => present,
+             path    => "/etc/yum.repos.d/isv_ownCloud_community.repo",
+             section => 'isv_ownCloud_community',
+             setting => 'enabled',
+             value   => "0",
+             before     => Class["owncloud"],
+          }
+      }
+
+      yumrepo { 'owncloud-ce-8.2':
+            name       => 'owncloud-ce-8.2',
+            descr      => 'ownCloud Server 8.2 Community Edition (CentOS_6_PHP56)',
+            baseurl    => 'http://download.owncloud.org/download/repositories/8.2/CentOS_6_PHP56',
+            mirrorlist => absent,
+            gpgcheck   => 1,
+            gpgkey     => 'http://download.owncloud.org/download/repositories/8.2/CentOS_6_PHP56/repodata/repomd.xml.key',
+            enabled    => 1,
+            before     => Class["owncloud"],
+            require    => [ Class['::remi'], Ini_setting["centos base repo exclude php packages2"], ]
+      }
+
+
+    }
+
   }
 
   package{ 'office package':
