@@ -10,7 +10,7 @@
 
 class owncloudstack (
 $owncloud_version="8",
-$manage_apache="true",
+$manage_apache=true,
 )
 {
 
