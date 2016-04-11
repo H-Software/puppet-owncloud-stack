@@ -10,6 +10,7 @@
 
 class owncloudstack (
 $owncloud_version="8",
+$manage_apache="true",
 )
 {
 
@@ -34,6 +35,7 @@ $owncloud_version="8",
 
   class { 'owncloud': 
       manage_repo => $owncloud_manage_repo,
+      manage_apache => $manage_apache,
   }
 
   class{ 'owncloudstack::services':
