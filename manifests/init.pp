@@ -39,6 +39,7 @@ $manage_apache=true,
   class { 'owncloud': 
       manage_repo => $owncloud_manage_repo,
       manage_apache => $manage_apache,
+      manage_phpmysql => false,
   }
 
   class{ 'owncloudstack::services':
