@@ -29,6 +29,9 @@ $manage_apache=true,
   if ($owncloud_version == "8.2"){
      $owncloud_manage_repo=false
   }
+  elsif ($owncloud_version == "9"){
+     $owncloud_manage_repo=true
+  }
   else{
      $owncloud_manage_repo=true
   }

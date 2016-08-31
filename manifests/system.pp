@@ -70,7 +70,14 @@ class owncloudstack::system ()
 
     # changes for owncloud 8.2
     #
-    if ($owncloudstack::owncloud_version == '8.2'){
+    if ($owncloudstack::owncloud_version == '9'){
+
+      yumrepo { 'owncloud-ce-8.2':
+            ensure    => absent,
+      }
+
+    }
+    elsif ($owncloudstack::owncloud_version == '8.2'){
 
       if ! defined(Yumrepo['isv_ownCloud_community']){
 
@@ -78,6 +85,17 @@ class owncloudstack::system ()
             name       => 'isv_ownCloud_community',
             enabled    => 0,
             before     => Class["owncloud"],
+        }
+
+        #packages
+        package { 'rhscl-httpd24-epel-6-x86_64':
+           ensure    => "absent",
+           before    => Class["owncloud"],
+        }
+
+        package { 'rhscl-rh-php56-epel-6-x86_64':
+           ensure    => "absent",
+           before    => Class["owncloud"],
         }
 
       }
