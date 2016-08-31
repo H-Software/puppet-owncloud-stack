@@ -35,6 +35,13 @@ class owncloudstack::system ()
       ensure => "latest",
     }
 
+    package { "mysql-repo":
+      name => "mysql-community-release",
+      ensure => "installed",
+      provider => 'rpm',
+      source => 'http://repo.mysql.com/mysql-community-release-el6.rpm'
+    }
+
     ini_setting { 'centos base repo exclude php packages':
       ensure  => present,
       path    => "/etc/yum.repos.d/CentOS-Base.repo",

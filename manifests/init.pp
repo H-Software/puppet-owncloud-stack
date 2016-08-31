@@ -21,6 +21,11 @@ $manage_apache=true,
     override_options => {
       'mysqld' => { 'bind-address' => '127.0.0.1' }
     },
+    package_name => "mysql-community-server",
+    package_ensure => "installed",
+    service_enabled => 'true',
+    restart  => 'true',
+    require => Package["mysql-repo"],
   }
 
   class { 'sendmail': 
