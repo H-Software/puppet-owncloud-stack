@@ -26,15 +26,13 @@ $mysql_override_options = {},
             'query_cache_size' => '64M',
   } }
 
-  $mysql_override_options = deep_merge($mysql_override_options, $mysql_override_options_profile)
+  $mysql_override_options_merged = deep_merge($mysql_override_options, $mysql_override_options_profile)
 
   class { 'owncloudstack::system':
   }
 
   class { 'mysql::server':
-    override_options => {
-      'mysqld' => { 'bind-address' => '127.0.0.1' }
-    },
+    override_options => $mysql_override_options_merged,
     package_name => "mysql-community-server",
     package_ensure => "installed",
     service_enabled => 'true',
