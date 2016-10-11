@@ -52,11 +52,13 @@ class owncloudstack::services ()
   if($::operatingsystem == "centos" and $::operatingsystemrelease >= 6 and $::operatingsystemrelease < 7) {
     $package_name = 'cronie'
     $service_name = 'crond'
+    $apache_user  = 'apache'
   }
   else
   {
     $package_name = 'cron' 
     $service_name = 'cron'
+    $apache_user  = 'www-run'
   }
 
   package {'cron':
@@ -72,9 +74,9 @@ class owncloudstack::services ()
     subscribe	=> File['owcnloud cron file'],
   }
 
-  $cron_file_owncloud = "*/15  *  *  *  * www-data php -f /var/www/owncloud/cron.php > /dev/null 2>&1\n"
+  $cron_file_owncloud = "*/15  *  *  *  * ${apache_user} php -f /var/www/owncloud/cron.php > /dev/null 2>&1\n"
 
-  file { 'owcnloud cron file':
+  file { 'owncloud cron file':
     name => '/etc/cron.d/owncloud',
     content => $cron_file_owncloud,
     require => Package["cron"],
