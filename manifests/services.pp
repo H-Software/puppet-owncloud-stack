@@ -71,7 +71,7 @@ class owncloudstack::services ()
     ensure      => "true",                     # true (running), false (stopped)
     name        => $service_name,
     require     => Package['cron'],
-    subscribe	=> File['owcnloud cron file'],
+    subscribe	=> File['owncloud cron file'],
   }
 
   $cron_file_owncloud = "*/15  *  *  *  * ${apache_user} php -f /var/www/owncloud/cron.php > /dev/null 2>&1\n"
