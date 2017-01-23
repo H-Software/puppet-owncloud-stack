@@ -11,7 +11,7 @@
 class owncloudstack (
 $owncloud_version="8",
 $manage_apache=true,
-$mange_vhost=true,
+$manage_vhost=true,
 $manage_clamav=true,
 $mysql_override_options = {},
 )
