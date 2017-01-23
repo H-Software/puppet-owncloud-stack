@@ -24,25 +24,28 @@ class owncloudstack::services ()
     $service_clamav = "clamav-freshclam"
   }
 
-  package { $packages_clamav:
+  if($::owncloudstack::manage_clamav){
+    package { $packages_clamav:
       ensure => latest,
-  }
+    }
 
-  if($::operatingsystem == "ubuntu") {
+    if($::operatingsystem == "ubuntu") {
 
-    service { 'clamav-freshclam':
+      service { 'clamav-freshclam':
+        ensure => running,
+        enable => true,
+        require => Package[$packages_clamav],
+      }
+
+    }
+
+    service { 'clamav-daemon':
+      name   => $service_clamav,
       ensure => running,
       enable => true,
       require => Package[$packages_clamav],
-    }
+   }
 
-  }
-
-  service { 'clamav-daemon':
-    name   => $service_clamav,
-    ensure => running,
-    enable => true,
-    require => Package[$packages_clamav],
   }
 
   #
