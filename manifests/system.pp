@@ -31,8 +31,10 @@ class owncloudstack::system ()
 
     include ::remi
 
-    package { "epel-release":
-      ensure => "latest",
+    if ! defined(Package['epel-release']){
+      package { "epel-release":
+        ensure => "latest",
+      }
     }
 
     package { "mysql-repo":
