@@ -11,6 +11,7 @@
 class owncloudstack (
 $owncloud_version="8",
 $manage_apache=true,
+$mange_vhost=true,
 $manage_clamav=true,
 $mysql_override_options = {},
 )
@@ -78,6 +79,7 @@ $mysql_override_options = {},
   class { 'owncloud': 
       manage_repo => $owncloud_manage_repo,
       manage_apache => $manage_apache,
+      manage_vhost  => $manage_vhost,
       manage_phpmysql => false,
   }
 
