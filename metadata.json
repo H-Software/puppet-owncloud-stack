@@ -1,0 +1,52 @@
+{
+  "author": "czhujer",
+  "dependencies": [
+    {
+      "name": "shoekstra/owncloud",
+      "version_requirement": ">= 0.5.2"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.10.0"
+    }
+  ],
+  "issues_url": "https://github.com/H-Software/puppet-owncloud-stack/issues",
+  "license": "MIT",
+  "name": "hsoftware-owncloudstack",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    }
+  ],
+  "project_page": "https://github.com/H-Software/puppet-owncloud-stack",
+  "source": "https://github.com/H-Software/puppet-owncloud-stack",
+  "summary": "A puppet module to manage owncloud stack",
+  "version": "0.6.2"
+}
