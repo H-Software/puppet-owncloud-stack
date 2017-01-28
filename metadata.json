@@ -28,6 +28,10 @@
     {
       "name": "puppetlabs/inifile",
       "version_requirement": ">= 1.5.0 < 2.0.0"
+    },
+    {
+       "name": "dhoppe/fail2ban",
+       "version_requirement": ">= 1.1.0 < 2.0.0"
     }
   ],
   "issues_url": "https://github.com/H-Software/puppet-owncloud-stack/issues",
