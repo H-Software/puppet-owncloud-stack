@@ -101,8 +101,8 @@ build:
     - source /etc/profile.d/rvm.sh; bundle exec rake test
     - source /etc/profile.d/rvm.sh; bundle exec r10k puppetfile check -v
     - source /etc/profile.d/rvm.sh; r10k puppetfile install -v
-    - mkdir /etc/puppet/modules/beats
-    - cp -ar ./* /etc/puppet/modules/beats
+    - mkdir /etc/puppet/modules/owncloudstack
+    - cp -ar ./* /etc/puppet/modules/owncloudstack
     - source /etc/profile.d/rvm.sh; puppet module list
 # fix for concat noop mode problem
 #    - source /etc/profile.d/rvm.sh; puppet apply tests/pre-init.pp
