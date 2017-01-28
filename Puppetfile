@@ -31,6 +31,8 @@ mod 'puppetlabs-inifile', '1.5.0'
 
 mod 'dhoppe-fail2ban', '1.3.4'
 
+mod 'puppet-extlib', '1.1.0'
+
 mod 'puppetlabs-apt', '2.2.2'
 
 mod 'puppetlabs-apache', '1.11.0'
