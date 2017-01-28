@@ -27,7 +27,7 @@ class owncloudstack::system ()
 
   }
 
-  if($::operatingsystem == 'centos' and versioncmp($::operatingsystemrelease, '6') and versioncmp($::operatingsystemrelease, '7') < 1) {
+  if($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and versioncmp($::operatingsystemrelease, '6') and versioncmp($::operatingsystemrelease, '7') < 1) {
 
     include ::remi
 
