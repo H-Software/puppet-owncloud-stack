@@ -33,7 +33,7 @@ $mysql_override_options = {},
   elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
   }
   else{
-    fail("${::operatingsystem} not supported")
+    fail("${::osfamily} not supported")
   }
 
   class { '::owncloudstack::system':
