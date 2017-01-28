@@ -41,25 +41,7 @@
       ]
     },
     {
-      "operatingsystem": "RedHat",
-      "operatingsystemrelease": [
-        "6"
-      ]
-    },
-    {
       "operatingsystem": "CentOS",
-      "operatingsystemrelease": [
-        "6"
-      ]
-    },
-    {
-      "operatingsystem": "Scientific",
-      "operatingsystemrelease": [
-        "6"
-      ]
-    },
-    {
-      "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
         "6"
       ]
