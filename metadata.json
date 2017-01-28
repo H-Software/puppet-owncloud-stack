@@ -16,6 +16,10 @@
     {
       "name": "saz/timezone",
       "version_requirement": ">= 3.4.0 < 4.0.0"
+    },
+    {
+      "name": "example42/sendmail",
+      "version_requirement": ">= 2.0.12 < 3.0.0"
     }
   ],
   "issues_url": "https://github.com/H-Software/puppet-owncloud-stack/issues",

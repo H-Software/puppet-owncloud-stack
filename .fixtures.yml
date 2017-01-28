@@ -9,6 +9,9 @@ fixtures:
     mysql:
       ref: '3.8.0'
       repo: puppetlabs/mysql
+    sendmail:
+      ref: '2.0.12'
+      repo: example42/sendmail
     owncloud:
       ref: '0.5.2'
       repo: shoekstra/owncloud
