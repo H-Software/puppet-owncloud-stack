@@ -84,7 +84,7 @@ matrix:
 build:
   pre_ci_boot:
     image_name: czhujer/shippable-c6ruby
-    image_tag: v0.4
+    image_tag: v0.4-2
     pull: true
     options: "-e HOME=/root"
 #
