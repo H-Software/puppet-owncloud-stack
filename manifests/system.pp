@@ -27,7 +27,7 @@ class owncloudstack::system ()
 
   }
 
-  if($::operatingsystem == 'centos' and $::operatingsystemrelease >= 6 and $::operatingsystemrelease < 7) {
+  if($::operatingsystem == 'centos' and versioncmp($::operatingsystemrelease, '6') and versioncmp($::operatingsystemrelease, '7') < 1) {
 
     include ::remi
 
@@ -38,10 +38,10 @@ class owncloudstack::system ()
     }
 
     package { 'mysql-repo':
-      name     => 'mysql-community-release',
       ensure   => 'installed',
+      name     => 'mysql-community-release',
       provider => 'rpm',
-      source   => 'http://repo.mysql.com/mysql-community-release-el6.rpm'
+      source   => 'http://repo.mysql.com/mysql-community-release-el6.rpm',
     }
 
     ini_setting { 'centos base repo exclude php packages':
@@ -72,7 +72,7 @@ class owncloudstack::system ()
         gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
         enabled    => 1,
         before     => Class['owncloud'],
-        require    => [ Class['::remi'], Ini_setting['centos base repo exclude php packages2'], ]
+        require    => [ Class['::remi'], Ini_setting['centos base repo exclude php packages2'], ],
       }
 
     }
@@ -131,20 +131,20 @@ class owncloudstack::system ()
         gpgkey     => 'http://download.owncloud.org/download/repositories/8.2/CentOS_6_PHP56/repodata/repomd.xml.key',
         enabled    => 1,
         before     => Class['owncloud'],
-        require    => [ Class['::remi'], Ini_setting['centos base repo exclude php packages2'], ]
+        require    => [ Class['::remi'], Ini_setting['centos base repo exclude php packages2'], ],
       }
 
       #packages
       package { 'rhscl-httpd24-epel-6-x86_64':
-         provider => rpm,
          ensure   => 'installed',
+         provider => rpm,
          source   => 'https://www.softwarecollections.org/en/scls/rhscl/httpd24/epel-6-x86_64/download/rhscl-httpd24-epel-6-x86_64.noarch.rpm',
          before   => Class['owncloud'],
       }
 
       package { 'rhscl-rh-php56-epel-6-x86_64':
-         provider => rpm,
          ensure   => 'installed',
+         provider => rpm,
          source   => 'https://www.softwarecollections.org/en/scls/rhscl/rh-php56/epel-6-x86_64/download/rhscl-rh-php56-epel-6-x86_64.noarch.rpm',
          before   => Class['owncloud'],
       }
