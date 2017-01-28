@@ -18,6 +18,8 @@ mod 'puppetlabs-firewall', '1.8.1'
 
 mod 'example42-sendmail', '2.0.12'
 
+mod 'example42-puppi', '2.2.1'
+
 #mod 'ckhall-remi', '0.0.2'
 mod 'hfm-remi', '1.4.0'
 
@@ -27,7 +29,7 @@ mod 'stm-debconf', '1.0.1'
 
 mod 'puppetlabs-inifile', '1.5.0'
 
-mod 'dhoppe-fail2ban', '1.1.1'
+mod 'dhoppe-fail2ban', '1.3.4'
 
 mod 'puppetlabs-apt', '2.2.2'
 
