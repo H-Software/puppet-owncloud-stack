@@ -58,7 +58,7 @@ $mysql_override_options = {},
       group   => 'mysql',
       mode    => '0640',
       notify  => Service['mysqld'],
-      require => Class['::mysql::server::end'],
+      require => Class['::mysql::server::service'],
     }
 
     # logrotate for mysql slow-query log
