@@ -52,8 +52,8 @@ class owncloudstack::services ()
   #
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
-     versioncmp($::operatingsystemrelease, '6') and
-     versioncmp($::operatingsystemrelease, '7') < 1
+    versioncmp($::operatingsystemrelease, '6') and
+    versioncmp($::operatingsystemrelease, '7') < 1
     ) {
     $package_name = 'cronie'
     $service_name = 'crond'
