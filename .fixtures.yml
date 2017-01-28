@@ -15,6 +15,9 @@ fixtures:
     remi:
       ref: '0.0.2'
       repo: ckhall/remi
+    epel:
+      ref: '1.2.2'
+      repo: stahnma/epel
     owncloud:
       ref: '0.5.2'
       repo: shoekstra/owncloud
