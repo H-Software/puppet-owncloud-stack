@@ -8,7 +8,7 @@ moduledir '/etc/puppet/modules'
 
 mod 'shoekstra-owncloud', '0.5.2'
 
-mod 'ntp', '4.2.0'
+mod 'puppetlabs-ntp', '4.2.0'
 
 mod 'saz-timezone', '3.4.0'
 
