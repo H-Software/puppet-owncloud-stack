@@ -29,8 +29,10 @@ $mysql_override_options = {},
       versioncmp($::operatingsystemrelease, '6') and
       versioncmp($::operatingsystemrelease, '7') < 1
     ) {
+    $require_mysql_server = Package['mysql-repo'] 
   }
   elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
+    $require_mysql_server = []
   }
   else{
     fail("${::osfamily} not supported")
@@ -45,7 +47,7 @@ $mysql_override_options = {},
     package_ensure   => 'installed',
     service_enabled  => true,
     restart          => true,
-    require          => Package['mysql-repo'],
+    require          => $require_mysql_server,
   }
 
     # slow query log
