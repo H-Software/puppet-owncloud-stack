@@ -37,7 +37,7 @@ fixtures:
       ref: '1.11.0'
       repo: puppetlabs/apache
     concat:
-      ref: '2.1.0'
+      ref: '2.2.0'
       repo: puppetlabs/concat
     owncloud:
       ref: '0.5.2'
@@ -46,7 +46,5 @@ fixtures:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
     puppi: "git://github.com/example42/puppi.git"
     monitor: "git://github.com/example42/puppet-monitor.git"
-    iptables: "git://github.com/example42/puppet-iptables.git"
-    concat: "git://github.com/example42/puppet-concat.git"
   symlinks:
    owncloudstack: "#{source_dir}"
