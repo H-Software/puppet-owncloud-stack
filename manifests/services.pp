@@ -20,7 +20,7 @@ class owncloudstack::services ()
   }
   else{
     $packages_clamav = ['clamav', 'clamav-base', 'clamav-daemon', 'clamav-freshclam']
-    $service_clamav = 'clamav-freshclam'
+    $service_clamav = 'clamav-daemon'
   }
 
   if($::owncloudstack::manage_clamav){
