@@ -64,35 +64,35 @@ describe 'owncloudstack' do
   end
 
   context 'Debian operation system' do
-    describe 'beats class without any parameters on Debian' do
+    describe 'owncloudstack class without any parameters on Debian' do
        let (:facts) {{
          :osfamily                  => 'Debian',
          :lsbdistid                 => 'Debian'
        }}
        it {
-         is_expected.to contain_class('beats::repo::apt')
-         is_expected.to contain_class('beats::repo::apt').that_comes_before('beats::package')
+#         is_expected.to contain_class('beats::repo::apt')
+#         is_expected.to contain_class('beats::repo::apt').that_comes_before('beats::package')
 
-         is_expected.to contain_package('geoip-database-contrib').with_ensure('latest')
-         is_expected.to contain_package('apt-transport-https').with_ensure('latest')
-         is_expected.to contain_package('libpcap0.8').with_ensure('installed')
+#         is_expected.to contain_package('geoip-database-contrib').with_ensure('latest')
+#         is_expected.to contain_package('apt-transport-https').with_ensure('latest')
+#         is_expected.to contain_package('libpcap0.8').with_ensure('installed')
        }
     end
   end
 
   context 'Ubuntu operation system' do
-    describe 'beats class without any parameters on Ubuntu' do
+    describe 'owncloudstack class without any parameters on Ubuntu' do
        let (:facts) {{
          :osfamily                  => 'Debian',
          :lsbdistid                 => 'Ubuntu'
        }}
        it {
-         is_expected.to contain_class('beats::repo::apt')
-         is_expected.to contain_class('beats::repo::apt').that_comes_before('beats::package')
+#         is_expected.to contain_class('beats::repo::apt')
+#         is_expected.to contain_class('beats::repo::apt').that_comes_before('beats::package')
 
-         is_expected.to contain_package('geoip-database-contrib').with_ensure('latest')
-         is_expected.to contain_package('apt-transport-https').with_ensure('latest')
-         is_expected.to contain_package('libpcap0.8').with_ensure('installed')
+#         is_expected.to contain_package('geoip-database-contrib').with_ensure('latest')
+#         is_expected.to contain_package('apt-transport-https').with_ensure('latest')
+#         is_expected.to contain_package('libpcap0.8').with_ensure('installed')
        }
     end
   end
