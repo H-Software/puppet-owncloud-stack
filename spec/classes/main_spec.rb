@@ -41,7 +41,7 @@ describe 'owncloudstack' do
         }
       end
 
-      it { expect { is_expected.to contain_package('owncloudstack') }.to raise_error(Puppet::Error, /Solaris not supported yet/) }
+      it { expect { is_expected.to contain_package('owncloudstack') }.to raise_error(Puppet::Error, /Solaris not supported/) }
     end
   end
 
