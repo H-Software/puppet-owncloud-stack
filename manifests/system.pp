@@ -11,18 +11,18 @@
 class owncloudstack::system ()
 {
 
-  include ntp
+  include ::ntp
 
-  include timezone
+  include ::timezone
 
 
   if($::operatingsystem == ubuntu) {
 
-    class { 'fail2ban':
-      package_ensure => 'latest',
+    class { '::fail2ban':
+      package_ensure       => 'latest',
       config_file_template => "fail2ban/${::lsbdistcodename}/etc/fail2ban/jail.conf.erb",
-      bantime => 3600,
-      require => Package['sendmail'],
+      bantime              => 3600,
+      require              => Package['sendmail'],
     }
 
   }
@@ -136,17 +136,17 @@ class owncloudstack::system ()
 
       #packages
       package { 'rhscl-httpd24-epel-6-x86_64':
-         ensure   => 'installed',
-         provider => rpm,
-         source   => 'https://www.softwarecollections.org/en/scls/rhscl/httpd24/epel-6-x86_64/download/rhscl-httpd24-epel-6-x86_64.noarch.rpm',
-         before   => Class['owncloud'],
+        ensure   => 'installed',
+        provider => rpm,
+        source   => 'https://www.softwarecollections.org/en/scls/rhscl/httpd24/epel-6-x86_64/download/rhscl-httpd24-epel-6-x86_64.noarch.rpm',
+        before   => Class['owncloud'],
       }
 
       package { 'rhscl-rh-php56-epel-6-x86_64':
-         ensure   => 'installed',
-         provider => rpm,
-         source   => 'https://www.softwarecollections.org/en/scls/rhscl/rh-php56/epel-6-x86_64/download/rhscl-rh-php56-epel-6-x86_64.noarch.rpm',
-         before   => Class['owncloud'],
+        ensure   => 'installed',
+        provider => rpm,
+        source   => 'https://www.softwarecollections.org/en/scls/rhscl/rh-php56/epel-6-x86_64/download/rhscl-rh-php56-epel-6-x86_64.noarch.rpm',
+        before   => Class['owncloud'],
       }
 
 
