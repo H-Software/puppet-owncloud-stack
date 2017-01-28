@@ -30,7 +30,7 @@ $mysql_override_options = {},
       versioncmp($::operatingsystemrelease, '7') < 1
     ) {
   }
-  elseif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
+  elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
   }
   else{
     fail("${::operatingsystem} not supported")
