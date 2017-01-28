@@ -20,6 +20,10 @@
     {
       "name": "example42/sendmail",
       "version_requirement": ">= 2.0.12 < 3.0.0"
+    },
+    {
+      "name": "chhall-remi",
+      "version_requirement": ">= 0.0.2 < 1.0.0"
     }
   ],
   "issues_url": "https://github.com/H-Software/puppet-owncloud-stack/issues",

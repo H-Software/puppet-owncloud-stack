@@ -16,6 +16,8 @@ mod 'puppetlabs-mysql', '3.8.0'
 
 mod 'example42-sendmail', '2.0.12'
 
+mod 'ckhall-remi', '0.0.2'
+
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
   :tag => '4.12.0'

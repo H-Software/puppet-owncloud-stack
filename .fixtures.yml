@@ -12,6 +12,9 @@ fixtures:
     sendmail:
       ref: '2.0.12'
       repo: example42/sendmail
+    remi:
+      ref: '0.0.2'
+      repo: chhall/remi
     owncloud:
       ref: '0.5.2'
       repo: shoekstra/owncloud
