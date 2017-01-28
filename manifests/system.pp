@@ -153,7 +153,7 @@ class owncloudstack::system ()
   }
 
   package{ 'office package':
-    esnure => latest,
+    ensure => latest,
     name   => 'libreoffice',
   }
 
