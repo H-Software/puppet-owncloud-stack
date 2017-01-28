@@ -56,7 +56,7 @@ $mysql_override_options = {},
       group   => 'mysql',
       mode    => '0640',
       notify  => Service['mysqld'],
-      require => Package['mysql-community-server'],
+      require => Class['::mysql::server'],
     }
 
     # logrotate for mysql slow-query log

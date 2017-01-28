@@ -17,7 +17,7 @@ class owncloudstack::system ()
       package_ensure       => 'latest',
       config_file_template => "fail2ban/${::lsbdistcodename}/etc/fail2ban/jail.conf.erb",
       bantime              => 3600,
-      require              => Package['sendmail'],
+      require              => Class['::sendmail'],
     }
 
   }
