@@ -22,7 +22,7 @@
       "version_requirement": ">= 2.0.12 < 3.0.0"
     },
     {
-      "name": "chhall-remi",
+      "name": "ckhall-remi",
       "version_requirement": ">= 0.0.2 < 1.0.0"
     }
   ],
