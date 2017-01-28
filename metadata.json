@@ -24,6 +24,10 @@
     {
       "name": "hfm/remi",
       "version_requirement": ">= 1.4.0 < 2.0.0"
+    },
+    {
+      "name": "puppetlabs/inifile",
+      "version_requirement": ">= 1.5.0 < 2.0.0"
     }
   ],
   "issues_url": "https://github.com/H-Software/puppet-owncloud-stack/issues",
