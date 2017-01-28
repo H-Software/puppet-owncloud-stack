@@ -7,7 +7,7 @@ fixtures:
       ref: '3.4.0'
       repo: saz/timezone
     mysql:
-      ref: '3.8.0'
+      ref: '3.10.0'
       repo: puppetlabs/mysql
     sendmail:
       ref: '2.0.12'
@@ -42,6 +42,9 @@ fixtures:
     extlib:
       ref: '1.1.0'
       repo: puppet/extlib
+    staging:
+      ref: '2.1.0'
+      repo: puppet/staging
     owncloud:
       ref: '0.5.2'
       repo: shoekstra/owncloud

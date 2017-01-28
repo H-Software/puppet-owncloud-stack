@@ -12,7 +12,7 @@ mod 'puppetlabs-ntp', '4.2.0'
 
 mod 'saz-timezone', '3.4.0'
 
-mod 'puppetlabs-mysql', '3.8.0'
+mod 'puppetlabs-mysql', '3.10.0'
 
 mod 'puppetlabs-firewall', '1.8.1'
 
@@ -38,6 +38,8 @@ mod 'puppetlabs-apt', '2.2.2'
 mod 'puppetlabs-apache', '1.11.0'
 
 mod 'puppetlabs-concat', '2.2.0'
+
+mod 'puppet-staging', '2.1.0'
 
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
