@@ -10,6 +10,8 @@ mod 'shoekstra-owncloud', '0.5.2'
 
 mod 'ntp', '4.2.0'
 
+mod 'saz-timezone', '3.4.0'
+
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
   :tag => '4.12.0'
