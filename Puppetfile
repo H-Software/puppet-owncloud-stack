@@ -31,7 +31,7 @@ mod 'dhoppe-fail2ban', '1.1.1'
 
 mod 'puppetlabs-apt', '2.2.2'
 
-mod 'puppetlabs-apache', '1.10.0'
+mod 'puppetlabs-apache', '1.11.0'
 
 mod 'puppetlabs-concat', '2.2.0'
 
