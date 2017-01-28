@@ -1,0 +1,56 @@
+fixtures:
+  forge_modules:
+    ntp:
+      ref: '4.2.0'
+      repo: puppetlabs/ntp
+    timezone:
+      ref: '3.4.0'
+      repo: saz/timezone
+    mysql:
+      ref: '3.10.0'
+      repo: puppetlabs/mysql
+    sendmail:
+      ref: '2.0.12'
+      repo: example42/sendmail
+    remi:
+      ref: '1.4.0'
+      repo: hfm/remi
+    epel:
+      ref: '1.2.2'
+      repo: stahnma/epel
+    debconf:
+      ref: '1.0.1'
+      repo: stm/debconf
+    inifile:
+      ref: '1.5.0'
+      repo: puppetlabs/inifile
+    firewall:
+      ref: '1.8.1'
+      repo: puppetlabs/firewall
+    fail2ban:
+      ref: '1.3.4'
+      repo: dhoppe/fail2ban
+    apt:
+      ref: '2.2.2'
+      repo: puppetlabs/apt
+    apache:
+      ref: '1.11.0'
+      repo: puppetlabs/apache
+    concat:
+      ref: '2.2.0'
+      repo: puppetlabs/concat
+    extlib:
+      ref: '1.1.0'
+      repo: puppet/extlib
+    staging:
+      ref: '2.1.0'
+      repo: puppet/staging
+    owncloud:
+      ref: '0.5.2'
+      repo: shoekstra/owncloud
+  repositories:
+    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+    puppi: "git://github.com/example42/puppi.git"
+    monitor: "git://github.com/example42/puppet-monitor.git"
+  symlinks:
+   owncloudstack: "#{source_dir}"

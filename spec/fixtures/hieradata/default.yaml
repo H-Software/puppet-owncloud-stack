@@ -1,0 +1,4 @@
+---
+# Default key/value pairs
+sendmail::source_dir: /etc/mail
+

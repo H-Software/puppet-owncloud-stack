@@ -1,0 +1,58 @@
+{
+  "author": "czhujer",
+  "dependencies": [
+    {
+      "name": "shoekstra/owncloud",
+      "version_requirement": ">= 0.5.2"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.10.0"
+    },
+    {
+      "name": "puppetlabs/ntp",
+      "version_requirement": ">= 4.2.0 < 5.0.0"
+    },
+    {
+      "name": "saz/timezone",
+      "version_requirement": ">= 3.4.0 < 4.0.0"
+    },
+    {
+      "name": "example42/sendmail",
+      "version_requirement": ">= 2.0.12 < 3.0.0"
+    },
+    {
+      "name": "hfm/remi",
+      "version_requirement": ">= 1.4.0 < 2.0.0"
+    },
+    {
+      "name": "puppetlabs/inifile",
+      "version_requirement": ">= 1.5.0 < 2.0.0"
+    },
+    {
+       "name": "dhoppe/fail2ban",
+       "version_requirement": ">= 1.1.0 < 2.0.0"
+    }
+  ],
+  "issues_url": "https://github.com/H-Software/puppet-owncloud-stack/issues",
+  "license": "MIT",
+  "name": "hsoftware-owncloudstack",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    }
+  ],
+  "project_page": "https://github.com/H-Software/puppet-owncloud-stack",
+  "source": "https://github.com/H-Software/puppet-owncloud-stack",
+  "summary": "A puppet module to manage owncloud stack",
+  "version": "0.7.0"
+}
