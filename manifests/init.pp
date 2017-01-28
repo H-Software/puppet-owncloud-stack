@@ -29,7 +29,7 @@ $mysql_override_options = {},
       versioncmp($::operatingsystemrelease, '6') and
       versioncmp($::operatingsystemrelease, '7') < 1
     ) {
-    $require_mysql_server = Package['mysql-repo'] 
+    $require_mysql_server = Package['mysql-repo']
   }
   elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
     $require_mysql_server = []
