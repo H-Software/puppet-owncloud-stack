@@ -36,6 +36,9 @@ fixtures:
     apache:
       ref: '1.10.0'
       repo: puppetlabs/apache
+    concat:
+      ref: '2.2.0'
+      repo: puppetlabs/concat
     owncloud:
       ref: '0.5.2'
       repo: shoekstra/owncloud
