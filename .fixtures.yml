@@ -13,8 +13,8 @@ fixtures:
       ref: '2.0.12'
       repo: example42/sendmail
     remi:
-      ref: '0.0.2'
-      repo: ckhall/remi
+      ref: '1.4.0'
+      repo: hfm/remi
     epel:
       ref: '1.2.2'
       repo: stahnma/epel

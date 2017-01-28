@@ -18,7 +18,8 @@ mod 'puppetlabs-firewall', '1.8.1'
 
 mod 'example42-sendmail', '2.0.12'
 
-mod 'ckhall-remi', '0.0.2'
+#mod 'ckhall-remi', '0.0.2'
+mod 'hfm-remi', '1.4.0'
 
 mod 'stahnma-epel', '1.2.2'
 
