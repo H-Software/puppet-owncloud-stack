@@ -110,7 +110,7 @@ build:
     - yum clean all
 # test real scenarios
 #    - source /etc/profile.d/rvm.sh; puppet apply tests/init.pp --test
-    - bash run_test.sh tests/init.pp
+    - bash run_test.sh tests/init-oc9.pp
 
   post_ci:
     - ls -lh shippable/testresults
