@@ -52,13 +52,13 @@ $mysql_override_options = {},
 
     # slow query log
     file { 'mysql-server slow query log':
-      ensure => present,
-      path   => '/var/log/mysql-slow.log',
-      owner  => 'mysql',
-      group  => 'mysql',
-      mode   => '0640',
-      notify => Service['mysqld'],
-      #require => Class['::mysql::server::service'],
+      ensure  => present,
+      path    => '/var/log/mysql-slow.log',
+      owner   => 'mysql',
+      group   => 'mysql',
+      mode    => '0640',
+      notify  => Service['mysqld'],
+      require => Service['mysqld'],
     }
 
     # logrotate for mysql slow-query log
