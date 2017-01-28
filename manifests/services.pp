@@ -32,18 +32,18 @@ class owncloudstack::services ()
     if($::operatingsystem == 'ubuntu') {
 
       service { 'clamav-freshclam':
-        ensure   => running,
-        enable   => true,
-        require  => Package[$packages_clamav],
+        ensure  => running,
+        enable  => true,
+        require => Package[$packages_clamav],
       }
 
     }
 
     service { 'clamav-daemon':
-      name     => $service_clamav,
-      ensure   => running,
-      enable   => true,
-      require  => Package[$packages_clamav],
+      ensure  => running,
+      name    => $service_clamav,
+      enable  => true,
+      require => Package[$packages_clamav],
     }
 
   }
@@ -65,24 +65,24 @@ class owncloudstack::services ()
   }
 
   package {'cron':
-      ensure      => 'present',
-      name        => $package_name,
+      ensure => 'present',
+      name   => $package_name,
   }
 
   service {'cron':
-    enable      => 'true',                     # true (start on boot)
-    ensure      => 'true',                     # true (running), false (stopped)
-    name        => $service_name,
-    require     => Package['cron'],
-    subscribe   => File['owncloud cron file'],
+    ensure    => true,
+    enable    => true,
+    name      => $service_name,
+    require   => Package['cron'],
+    subscribe => File['owncloud cron file'],
   }
 
   $cron_file_owncloud = "*/15  *  *  *  * ${apache_user} php -f /var/www/owncloud/cron.php > /dev/null 2>&1\n"
 
   file { 'owncloud cron file':
-    name      => '/etc/cron.d/owncloud',
-    content   => $cron_file_owncloud,
-    require   => Package['cron'],
+    name    => '/etc/cron.d/owncloud',
+    content => $cron_file_owncloud,
+    require => Package['cron'],
   }
 
 }

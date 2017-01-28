@@ -18,14 +18,14 @@ $mysql_override_options = {},
 {
 
   $mysql_override_options_profile = { 'mysqld' => {
-      'bind-address' => '127.0.0.1',
-            'log_warnings' => '4',
-            'slow_query_log' => '1',
-            'slow_query_log_file' => '/var/log/mysql-slow.log',
-            'log_output' => 'table,file', #!! for GENERAL and SLOW-QUERY
-            'long_query_time' => '3',
-            'query_cache_type' => '1',
-            'query_cache_size' => '64M',
+      'bind-address'         => '127.0.0.1',
+      'log_warnings'         => '4',
+      'slow_query_log'       => '1',
+      'slow_query_log_file'  => '/var/log/mysql-slow.log',
+      'log_output'           => 'table,file', #!! for GENERAL and SLOW-QUERY
+      'long_query_time'      => '3',
+      'query_cache_type'     => '1',
+      'query_cache_size'     => '64M',
   } }
 
   $mysql_override_options_merged = deep_merge($mysql_override_options, $mysql_override_options_profile)
@@ -34,12 +34,12 @@ $mysql_override_options = {},
   }
 
   class { '::mysql::server':
-    override_options   => $mysql_override_options_merged,
-    package_name       => 'mysql-community-server',
-    package_ensure     => 'installed',
-    service_enabled    => true,
-    restart            => true,
-    require            => Package['mysql-repo'],
+    override_options => $mysql_override_options_merged,
+    package_name     => 'mysql-community-server',
+    package_ensure   => 'installed',
+    service_enabled  => true,
+    restart          => true,
+    require          => Package['mysql-repo'],
   }
 
     # slow query log
@@ -49,8 +49,8 @@ $mysql_override_options = {},
       owner   => 'mysql',
       group   => 'mysql',
       mode    => '0640',
-      notify => Service['mysqld'],
-      require => Package["mysql-community-server"],
+      notify  => Service['mysqld'],
+      require => Package['mysql-community-server'],
     }
 
     # logrotate for mysql slow-query log
