@@ -3,6 +3,9 @@ fixtures:
     ntp:
       ref: '4.2.0'
       repo: puppetlabs/ntp
+    timezone:
+      ref: '3.4.0'
+      repo: saz/timezone 
     owncloud:
       ref: '0.5.2'
       repo: shoekstra/owncloud
