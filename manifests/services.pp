@@ -28,7 +28,7 @@ class owncloudstack::services ()
       ensure => latest,
     }
 
-    if($::operatingsystem == 'ubuntu') {
+    if($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian') {
 
       service { 'clamav-freshclam':
         ensure  => running,

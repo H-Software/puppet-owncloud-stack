@@ -11,7 +11,7 @@ class owncloudstack::system ()
   include ::timezone
 
 
-  if($::operatingsystem == ubuntu) {
+  if($::operatingsystem == ubuntu or $::operatingsystem == 'debian') {
 
     class { '::fail2ban':
       package_ensure       => 'latest',

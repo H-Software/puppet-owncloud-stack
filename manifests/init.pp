@@ -25,6 +25,17 @@ $mysql_override_options = {},
 
   $mysql_override_options_merged = deep_merge($mysql_override_options, $mysql_override_options_profile)
 
+  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
+      versioncmp($::operatingsystemrelease, '6') and
+      versioncmp($::operatingsystemrelease, '7') < 1
+    ) {
+  }
+  elseif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
+  }
+  else{
+    fail("${::operatingsystem} not supported")
+  }
+
   class { '::owncloudstack::system':
   }
 
