@@ -5,7 +5,10 @@ fixtures:
       repo: puppetlabs/ntp
     timezone:
       ref: '3.4.0'
-      repo: saz/timezone 
+      repo: saz/timezone
+    mysql:
+      ref: '3.8.0'
+      repo: puppetlabs/mysql
     owncloud:
       ref: '0.5.2'
       repo: shoekstra/owncloud

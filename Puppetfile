@@ -12,6 +12,8 @@ mod 'ntp', '4.2.0'
 
 mod 'saz-timezone', '3.4.0'
 
+mod 'puppetlabs-mysql', '3.8.0'
+
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
   :tag => '4.12.0'
