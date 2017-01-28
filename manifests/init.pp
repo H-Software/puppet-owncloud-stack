@@ -1,12 +1,3 @@
-#########################################################
-#							#
-# OwnCLoud manifest - main part				#
-#							#
-# create by czhujer (patrik.majer.pisek@gmail.com) 	#
-#							#
-# version: 0.3						#
-#							#
-#########################################################
 
 class owncloudstack (
 $owncloud_version='8',
