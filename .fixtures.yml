@@ -30,6 +30,9 @@ fixtures:
     fail2ban:
       ref: '1.1.1'
       repo: dhoppe/fail2ban
+    apt:
+      ref: '2.2.2'
+      repo: puppetlabs/apt
     owncloud:
       ref: '0.5.2'
       repo: shoekstra/owncloud

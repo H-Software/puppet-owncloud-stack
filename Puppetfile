@@ -29,6 +29,8 @@ mod 'puppetlabs-inifile', '1.5.0'
 
 mod 'dhoppe-fail2ban', '1.1.1'
 
+mod 'puppetlabs-apt', '2.2.2'
+
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
   :tag => '4.12.0'
