@@ -93,10 +93,10 @@ $mysql_override_options = {},
   }
 
   class { '::owncloud':
-    manage_repo     => $owncloud_manage_repo,
-    manage_apache   => $manage_apache,
-    manage_vhost    => $manage_vhost,
-    manage_phpmysql => false,
+    manage_repo   => $owncloud_manage_repo,
+    manage_apache => $manage_apache,
+    manage_vhost  => $manage_vhost,
+    #manage_phpmysql => false,
   }
 
   class{ '::owncloudstack::services':

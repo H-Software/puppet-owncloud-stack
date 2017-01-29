@@ -36,13 +36,13 @@ class owncloudstack::system ()
 
     #include ::remi
     class { '::remi':
-      before => Class['::owncloud'],
+      before => Class['::owncloud::php'],
     }
 
     if ! defined(Package['epel-release']){
       package { 'epel-release':
         ensure => 'latest',
-        before => Class['::owncloud'],
+        before => Class['::owncloud::php'],
       }
     }
 
@@ -59,7 +59,7 @@ class owncloudstack::system ()
       section => 'base',
       setting => 'exclude',
       value   => 'php-*',
-      before  => Class['::owncloud'],
+      before  => Class['::owncloud::php'],
     }
 
     ini_setting { 'centos base repo exclude php packages2':
@@ -69,7 +69,7 @@ class owncloudstack::system ()
       setting => 'exclude',
       value   => 'php-*',
       require => Ini_setting['centos base repo exclude php packages'],
-      before  => Class['::owncloud'],
+      before  => Class['::owncloud::php'],
     }
 
     #if ! defined(Yumrepo['remi-php56']){
