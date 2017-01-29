@@ -22,9 +22,9 @@ class owncloudstack::system ()
     }
     else{
       class { '::fail2ban':
-        package_ensure       => 'latest',
-        bantime              => 3600,
-        require              => Class['::sendmail'],
+        package_ensure => 'latest',
+        bantime        => 3600,
+        require        => Class['::sendmail'],
       }
     }
   }
@@ -35,7 +35,7 @@ class owncloudstack::system ()
     ) {
 
     #include ::remi
-    class { 'remi':
+    class { '::remi':
       before => Class['::owncloud'],
     }
 
