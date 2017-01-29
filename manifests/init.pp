@@ -8,6 +8,7 @@ $owncloud_version='8',
 $manage_apache=true,
 $manage_vhost=true,
 $manage_clamav=true,
+$manage_fail2ban=true,
 $mysql_override_options = {},
 )
 {
