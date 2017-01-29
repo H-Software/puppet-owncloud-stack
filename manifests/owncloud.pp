@@ -7,9 +7,9 @@ class owncloudstack::owncloud ()
 {
   #fix directory creating
   exec { "mkdir -p ${::owncloudstack::documentroot}/config":
-    path    => ['/bin', '/usr/bin'],
-    unless  => "test -d ${::owncloudstack::documentroot}/config",
-    before  => File["${::owncloudstack::documentroot}/config/autoconfig.php"],
+    path   => ['/bin', '/usr/bin'],
+    unless => "test -d ${::owncloudstack::documentroot}/config",
+    before => File["${::owncloudstack::documentroot}/config/autoconfig.php"],
   }
 
   class { '::owncloud':
