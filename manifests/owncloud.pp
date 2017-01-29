@@ -5,7 +5,7 @@
 #########################################################
 class owncloudstack::owncloud ()
 {
-  
+ 
   #fix directory creating
   exec { "mkdir -p ${::owncloudstack::documentroot}/config":
     path    => ['/bin', '/usr/bin'],

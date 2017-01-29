@@ -39,7 +39,7 @@ $mysql_override_options = {},
       versioncmp($::operatingsystemrelease, '7') < 1
     ) {
     $require_mysql_server = Package['mysql-repo']
-    $documentroot = '/var/www/html/owncloud' 
+    $documentroot = '/var/www/html/owncloud'
   }
   elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
     $require_mysql_server = []
