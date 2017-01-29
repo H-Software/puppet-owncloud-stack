@@ -167,9 +167,9 @@ describe 'owncloudstack' do
 
        it { is_expected.to contain_file('/var/www/owncloud').with({
               'ensure' => 'directory',
-              'owner'  => 'www-data',
-              'mode'   => '0755',
-              'group'  => 'www-data',
+              'owner'  => 'root',
+              #'mode'   => '0755',
+              'group'  => 'root',
             })
           }
 
@@ -185,6 +185,7 @@ describe 'owncloudstack' do
          :operatingsystemmajrelease => '12.04',
          :operatingsystemrelease    => '12.04',
          :lsbdistcodename           => 'precise',
+         :lsbdistrelease            => '12.04',
          :ipaddress                 => '10.42.42.42',
          :is_virtual                => true
        }}
