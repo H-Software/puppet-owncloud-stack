@@ -9,7 +9,7 @@ class owncloudstack::owncloud ()
   exec { "mkdir -p ${::owncloudstack::documentroot}/config":
     path    => ['/bin', '/usr/bin'],
     unless  => "test -d ${::owncloudstack::documentroot}/config",
-    require => File["${::owncloudstack::documentroot}/config/autoconfig.php"],
+    before  => File["${::owncloudstack::documentroot}/config/autoconfig.php"],
   }
 
   class { '::owncloud':
