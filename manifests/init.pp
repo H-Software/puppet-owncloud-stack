@@ -8,6 +8,7 @@ $owncloud_version='8',
 $manage_apache=true,
 $manage_vhost=true,
 $manage_clamav=true,
+$manage_fail2ban=true,
 $mysql_override_options = {},
 )
 {
@@ -25,52 +26,27 @@ $mysql_override_options = {},
 
   $mysql_override_options_merged = deep_merge($mysql_override_options, $mysql_override_options_profile)
 
+  validate_bool($manage_apache)
+
+  validate_bool($manage_vhost)
+
+  validate_bool($manage_clamav)
+
+  validate_bool($manage_fail2ban)
+
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
       versioncmp($::operatingsystemrelease, '6') and
       versioncmp($::operatingsystemrelease, '7') < 1
     ) {
     $require_mysql_server = Package['mysql-repo']
+    $documentroot = '/var/www/html/owncloud'
   }
   elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
     $require_mysql_server = []
+    $documentroot = '/var/www/owncloud'
   }
   else{
     fail("${::osfamily} not supported")
-  }
-
-  class { '::owncloudstack::system':
-  }
-
-  class { '::mysql::server':
-    override_options => $mysql_override_options_merged,
-    package_name     => 'mysql-community-server',
-    package_ensure   => 'installed',
-    service_enabled  => true,
-    restart          => true,
-    require          => $require_mysql_server,
-  }
-
-    # slow query log
-    file { 'mysql-server slow query log':
-      ensure    => present,
-      path      => '/var/log/mysql-slow.log',
-      owner     => 'mysql',
-      group     => 'mysql',
-      mode      => '0640',
-      subscribe => Service['mysqld'],
-    }
-
-    # logrotate for mysql slow-query log
-    file { 'mysql-server slow query log logrotate':
-      ensure  => present,
-      path    => '/etc/logrotate.d/mysql-slow',
-      content => template('owncloudstack/logrotate.conf.mysql-slow.erb'),
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0644',
-    }
-
-  class { '::sendmail':
   }
 
   if ($owncloud_version == '8.2'){
@@ -83,14 +59,10 @@ $mysql_override_options = {},
     $owncloud_manage_repo=true
   }
 
-  class { '::owncloud':
-    manage_repo     => $owncloud_manage_repo,
-    manage_apache   => $manage_apache,
-    manage_vhost    => $manage_vhost,
-    manage_phpmysql => false,
-  }
-
-  class{ '::owncloudstack::services':
-  }
+  class { '::owncloudstack::system': } ->
+  class { '::owncloudstack::services': } ->
+  class { '::owncloudstack::mysql': } ->
+  class { '::owncloudstack::owncloud': } ->
+  Class['::owncloudstack']
 
 }

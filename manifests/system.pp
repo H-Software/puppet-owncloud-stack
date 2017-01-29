@@ -10,16 +10,23 @@ class owncloudstack::system ()
 
   include ::timezone
 
+  if($::owncloudstack::manage_fail2ban){
 
-  if($::operatingsystem == ubuntu or $::operatingsystem == 'debian') {
-
-    class { '::fail2ban':
-      package_ensure       => 'latest',
-      config_file_template => "fail2ban/${::lsbdistcodename}/etc/fail2ban/jail.conf.erb",
-      bantime              => 3600,
-      require              => Class['::sendmail'],
+    if($::operatingsystem == ubuntu or $::operatingsystem == 'debian') {
+      class { '::fail2ban':
+        package_ensure       => 'latest',
+        config_file_template => "fail2ban/${::lsbdistcodename}/etc/fail2ban/jail.conf.erb",
+        bantime              => 3600,
+        require              => Class['::sendmail'],
+      }
     }
-
+    else{
+      class { '::fail2ban':
+        package_ensure => 'latest',
+        bantime        => 3600,
+        require        => Class['::sendmail'],
+      }
+    }
   }
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
@@ -27,7 +34,13 @@ class owncloudstack::system ()
     versioncmp($::operatingsystemrelease, '7') < 1
     ) {
 
-    include ::remi
+    #include ::remi
+    class { '::remi':
+      use_epel           => false,
+      remi_enabled       => '1',
+      remi_php56_enabled => '1',
+      require            => Package['epel-release'],
+    }
 
     if ! defined(Package['epel-release']){
       package { 'epel-release':
@@ -59,21 +72,21 @@ class owncloudstack::system ()
       require => Ini_setting['centos base repo exclude php packages'],
     }
 
-    if ! defined(Yumrepo['remi-php56']){
+    #if ! defined(Yumrepo['remi-php56']){
 
-      yumrepo { 'remi-php56':
-        name       => 'remi-php56',
-        descr      => 'Les RPM de remi de PHP 5.6 pour Enterprise Linux 6 - $basearch',
-        baseurl    => absent,
-        mirrorlist => 'http://rpms.famillecollet.com/enterprise/6/php56/mirror',
-        gpgcheck   => 1,
-        gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
-        enabled    => 1,
-        before     => Class['owncloud'],
-        require    => [ Class['::remi'], Ini_setting['centos base repo exclude php packages2'], ],
-      }
+    #  yumrepo { 'remi-php56':
+    #    name       => 'remi-php56',
+    #    descr      => 'Les RPM de remi de PHP 5.6 pour Enterprise Linux 6 - $basearch',
+    #    baseurl    => absent,
+    #    mirrorlist => 'http://rpms.famillecollet.com/enterprise/6/php56/mirror',
+    #    gpgcheck   => 1,
+    #    gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
+    #    enabled    => 1,
+    #    before     => Class['owncloud'],
+    #    require    => [ Class['::remi'], Ini_setting['centos base repo exclude php packages2'], ],
+    #  }
 
-    }
+    #}
 
     # changes for owncloud 9.x
     #
