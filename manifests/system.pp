@@ -36,8 +36,10 @@ class owncloudstack::system ()
 
     #include ::remi
     class { '::remi':
-      use_epel => false,
-      require  => Package['epel-release'],
+      use_epel           => false,
+      remi_enabled       => '1',
+      remi_php56_enabled => '1',
+      require            => Package['epel-release'],
     }
 
     if ! defined(Package['epel-release']){
