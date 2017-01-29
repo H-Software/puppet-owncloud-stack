@@ -70,7 +70,7 @@ describe 'owncloudstack' do
     describe 'owncloudstack class without any parameters on RedHat/CentOS 6' do
        let (:facts) {{
          :osfamily                  => 'RedHat',
-         :operatingsystem           => 'RedHat',
+         :operatingsystem           => 'CentOS',
          :operatingsystemmajrelease => '6',
          :operatingsystemrelease    => '6.8',
          :architecture              => 'x86_64',
@@ -184,6 +184,7 @@ describe 'owncloudstack' do
          :osfamily                  => 'Debian',
          :lsbdistid                 => 'Ubuntu',
          :operatingsystem           => 'Ubuntu',
+         :operatingsystemmajrelease => '12.04',
          :lsbdistcodename           => 'precise',
          :ipaddress                 => '10.42.42.42',
          :is_virtual                => true
