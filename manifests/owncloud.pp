@@ -5,6 +5,13 @@
 #########################################################
 class owncloudstack::owncloud ()
 {
+  
+  #fix directory creating
+  exec { "mkdir -p ${::owncloudstack::documentroot}/config":
+    path    => ['/bin', '/usr/bin'],
+    unless  => "test -d ${::owncloudstack::documentroot}/config",
+    require => File["${::owncloudstack::documentroot}/config/autoconfig.php"],
+  }
 
   class { '::owncloud':
     manage_repo   => $::owncloudstack::owncloud_manage_repo,
