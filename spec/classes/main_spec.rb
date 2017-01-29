@@ -108,7 +108,8 @@ describe 'owncloudstack' do
     describe 'owncloudstack class without any parameters on Debian' do
        let (:facts) {{
          :osfamily                  => 'Debian',
-         :lsbdistid                 => 'Debian'
+         :lsbdistid                 => 'Debian',
+         :operatingsystem           => 'Debian'
        }}
        it {
 
@@ -151,7 +152,8 @@ describe 'owncloudstack' do
     describe 'owncloudstack class without any parameters on Ubuntu' do
        let (:facts) {{
          :osfamily                  => 'Debian',
-         :lsbdistid                 => 'Ubuntu'
+         :lsbdistid                 => 'Ubuntu',
+         :operatingsystem           => 'Ubuntu'
        }}
        it {
          is_expected.to contain_package('apache2.2-bin').with_ensure('installed')
