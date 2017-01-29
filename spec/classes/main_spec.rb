@@ -186,6 +186,7 @@ describe 'owncloudstack' do
          :lsbdistid                 => 'Ubuntu',
          :operatingsystem           => 'Ubuntu',
          :operatingsystemmajrelease => '12.04',
+         :operatingsystemrelease    => '12.04',
          :lsbdistcodename           => 'precise',
          :ipaddress                 => '10.42.42.42',
          :is_virtual                => true
