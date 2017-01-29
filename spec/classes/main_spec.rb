@@ -32,14 +32,9 @@ describe 'owncloudstack' do
           it { is_expected.to contain_package('php').with_ensure('installed') }
           it { is_expected.to contain_package('php-ldap').with_ensure('installed') }
           it { is_expected.to contain_package('php-mysqlnd').with_ensure('installed') }
-          it { is_expected.to contain_package('fail2ban').with_ensure('installed') }
+          it { is_expected.to contain_package('fail2ban').with_ensure('latest') }
           it { is_expected.to contain_package('sendmail').with_ensure('installed') }
-
-          it { is_expected.to contain_service('httpd').with(
-                'ensure'     => 'running',
-                'enable'     => 'true',
-                'hasrestart' => 'true',
-               ) }
+          it { is_expected.to contain_package('libreoffice').with_ensure('latest') }
 
           it { is_expected.to contain_service('mysqld').with(
                 'ensure'     => 'running',
@@ -93,6 +88,13 @@ describe 'owncloudstack' do
          it { is_expected.to contain_package('mysql-community-server').with_ensure('installed') }
          it { is_expected.to contain_package('httpd').with_ensure('installed') }
 
+         it { is_expected.to contain_service('httpd').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
+
        }
     end
   end
@@ -107,6 +109,13 @@ describe 'owncloudstack' do
 
          is_expected.to contain_package('apache2.2-bin').with_ensure('installed')
          is_expected.to contain_package('apache2-utils').with_ensure('installed')
+
+         it { is_expected.to contain_service('apache2').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
 
        }
     end
@@ -123,6 +132,13 @@ describe 'owncloudstack' do
          is_expected.to contain_package('apache2.2-bin').with_ensure('installed')
          is_expected.to contain_package('apache2-utils').with_ensure('installed')
  
+         it { is_expected.to contain_service('apache2').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
+
        }
     end
   end
