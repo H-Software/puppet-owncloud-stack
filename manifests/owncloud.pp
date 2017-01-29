@@ -11,6 +11,12 @@ class owncloudstack::owncloud ()
     unless => "test -d ${::owncloudstack::documentroot}/config",
     before => File["${::owncloudstack::documentroot}/config/autoconfig.php"],
   }
+  
+  exec { "mkdir -p ${::owncloudstack::documentroot}/core/skeleton":
+    path   => ['/bin', '/usr/bin'],
+    unless => "test -d ${::owncloudstack::documentroot}/core/skeleton",
+    before => File["${::owncloudstack::documentroot}/core/skeleton/documents"],
+  }
 
   class { '::owncloud':
     manage_repo   => $::owncloudstack::owncloud_manage_repo,
