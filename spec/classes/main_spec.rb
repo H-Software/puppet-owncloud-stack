@@ -217,13 +217,13 @@ describe 'owncloudstack' do
                ) }
 
  
-       it { is_expected.to contain_service('apache2').with(
-                'ensure'     => 'running',
-                'enable'     => 'true',
-                'hasrestart' => 'true',
-               ) }
+#       it { is_expected.to contain_service('apache2').with(
+#                'ensure'     => 'running',
+#                'enable'     => 'true',
+#                'hasrestart' => 'true',
+#               ) }
 
-       it { is_expected.to contain_file('/var/www/html/owncloud').with({
+       it { is_expected.to contain_file('/var/www/owncloud').with({
               'ensure' => 'directory',
               'owner'  => 'www-data',
               'mode'   => '0755',
