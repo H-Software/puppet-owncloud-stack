@@ -20,33 +20,25 @@ describe 'owncloudstack' do
           it { is_expected.to contain_class('owncloudstack::services').that_comes_before('owncloudstack::mysql') }
           it { is_expected.to contain_class('owncloudstack::mysql').that_comes_before('owncloudstack::owncloud') }
 
-          it { is_expected.to contain_file('/var/www/html/owncloud').with({
-              'ensure' => 'directory',
-              'owner'  => 'apache',
-              'mode'   => '0755',
-              'group'  => 'apache',
-            })
-          }
-
-          it { is_expected.to contain_package('owncloud').with_ensure('installed') }
-          it { is_expected.to contain_package('php').with_ensure('installed') }
-          it { is_expected.to contain_package('php-ldap').with_ensure('installed') }
-          it { is_expected.to contain_package('php-mysqlnd').with_ensure('installed') }
+#          it { is_expected.to contain_package('owncloud').with_ensure('installed') }
+#          it { is_expected.to contain_package('php').with_ensure('installed') }
+#          it { is_expected.to contain_package('php-ldap').with_ensure('installed') }
+#          it { is_expected.to contain_package('php-mysqlnd').with_ensure('installed') }
           it { is_expected.to contain_package('fail2ban').with_ensure('latest') }
           it { is_expected.to contain_package('sendmail').with_ensure('installed') }
-          it { is_expected.to contain_package('libreoffice').with_ensure('latest') }
+#          it { is_expected.to contain_package('libreoffice').with_ensure('latest') }
 
-          it { is_expected.to contain_service('mysqld').with(
-                'ensure'     => 'running',
-                'enable'     => 'true',
-                'hasrestart' => 'true',
-               ) }
+#          it { is_expected.to contain_service('mysqld').with(
+#                'ensure'     => 'running',
+#                'enable'     => 'true',
+#                'hasrestart' => 'true',
+#               ) }
 
-          it { is_expected.to contain_service('sendmail').with(
-                'ensure'     => 'running',
-                'enable'     => 'true',
-                'hasrestart' => 'true',
-               ) }
+#          it { is_expected.to contain_service('sendmail').with(
+#                'ensure'     => 'running',
+#                'enable'     => 'true',
+#                'hasrestart' => 'true',
+#               ) }
 
           it { is_expected.to contain_service('fail2ban').with(
                 'ensure'     => 'running',
@@ -94,6 +86,15 @@ describe 'owncloudstack' do
                 'hasrestart' => 'true',
                ) }
 
+          it { is_expected.to contain_file('/var/www/html/owncloud').with({
+              'ensure' => 'directory',
+              'owner'  => 'apache',
+              'mode'   => '0755',
+              'group'  => 'apache',
+            })
+          }
+
+
 
        }
     end
@@ -116,6 +117,14 @@ describe 'owncloudstack' do
                 'hasrestart' => 'true',
                ) }
 
+          it { is_expected.to contain_file('/var/www/html/owncloud').with({
+              'ensure' => 'directory',
+              'owner'  => 'www-data',
+              'mode'   => '0755',
+              'group'  => 'www-data',
+            })
+          }
+
 
        }
     end
@@ -137,6 +146,14 @@ describe 'owncloudstack' do
                 'enable'     => 'true',
                 'hasrestart' => 'true',
                ) }
+
+         it { is_expected.to contain_file('/var/www/html/owncloud').with({
+              'ensure' => 'directory',
+              'owner'  => 'www-data',
+              'mode'   => '0755',
+              'group'  => 'www-data',
+            })
+          }
 
 
        }
