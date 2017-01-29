@@ -93,6 +93,12 @@ describe 'owncloudstack' do
                 'hasrestart' => 'true',
                ) }
 
+         it { is_expected.to contain_service('crond').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
 
          it { is_expected.to contain_service('httpd').with(
                 'ensure'     => 'running',
@@ -145,6 +151,12 @@ describe 'owncloudstack' do
                 'hasrestart' => 'true',
                ) }
 
+       it { is_expected.to contain_service('cron').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
 
        it { is_expected.to contain_service('apache2').with(
                 'ensure'     => 'running',
@@ -184,6 +196,18 @@ describe 'owncloudstack' do
                ) }
 
        it { is_expected.to contain_service('clamav-freshclam').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
+       it { is_expected.to contain_service('ntp').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
+       it { is_expected.to contain_service('cron').with(
                 'ensure'     => 'running',
                 'enable'     => 'true',
                 'hasrestart' => 'true',
