@@ -123,6 +123,7 @@ describe 'owncloudstack' do
          :osfamily                  => 'Debian',
          :lsbdistid                 => 'Debian',
          :operatingsystem           => 'Debian',
+         :lsbdistcodename           => 'wheezy',
          :is_virtual                => true
        }}
        it {
@@ -181,6 +182,7 @@ describe 'owncloudstack' do
          :osfamily                  => 'Debian',
          :lsbdistid                 => 'Ubuntu',
          :operatingsystem           => 'Ubuntu',
+         :lsbdistcodename           => 'precise',
          :is_virtual                => true
        }}
        it {
