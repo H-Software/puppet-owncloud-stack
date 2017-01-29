@@ -86,6 +86,12 @@ describe 'owncloudstack' do
                 'hasrestart' => 'true',
                ) }
 
+         it { is_expected.to contain_service('ntpd').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
 
          it { is_expected.to contain_service('httpd').with(
                 'ensure'     => 'running',
@@ -130,6 +136,13 @@ describe 'owncloudstack' do
                 'enable'     => 'true',
                 'hasrestart' => 'true',
                ) }
+
+       it { is_expected.to contain_service('ntp').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
 
        it { is_expected.to contain_service('apache2').with(
                 'ensure'     => 'running',
