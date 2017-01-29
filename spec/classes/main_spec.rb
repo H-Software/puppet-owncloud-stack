@@ -225,9 +225,9 @@ describe 'owncloudstack' do
 
        it { is_expected.to contain_file('/var/www/owncloud').with({
               'ensure' => 'directory',
-              'owner'  => 'www-data',
-              'mode'   => '0755',
-              'group'  => 'www-data',
+              'owner'  => 'root',
+              #'mode'   => '0755',
+              'group'  => 'root',
             })
           }
     end
