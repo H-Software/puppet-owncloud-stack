@@ -12,21 +12,56 @@ describe 'owncloudstack' do
           it { is_expected.to compile.with_all_deps }
 
           it { is_expected.to contain_class('owncloudstack') }
-#          it { is_expected.to contain_class('beats::package') }
-#          it { is_expected.to contain_class('beats::config') }
-#          it { is_expected.to contain_class('beats::package').that_comes_before('beats::config') }
-#          #it { is_expected.to contain_class('beats::service').that_subscribes_to('beats::filebeat') }
+          it { is_expected.to contain_class('owncloudstack::system') }
+          it { is_expected.to contain_class('owncloudstack::services') }
+          it { is_expected.to contain_class('owncloudstack::mysql') }
+          it { is_expected.to contain_class('owncloudstack::owncloud') }
+          it { is_expected.to contain_class('owncloudstack::system').that_comes_before('owncloudstack::services') }
+          it { is_expected.to contain_class('owncloudstack::services').that_comes_before('owncloudstack::mysql') }
+          it { is_expected.to contain_class('owncloudstack::mysql').that_comes_before('owncloudstack::owncloud') }
 
-#          it { is_expected.to contain_file('/etc/beats/').with({
-#              'ensure' => 'directory',
-#              'owner'  => 'root',
-#              'mode'   => '0755',
-#              'owner'  => 'root',
-#            })
-#          }
+          it { is_expected.to contain_file('/var/www/html/owncloud').with({
+              'ensure' => 'directory',
+              'owner'  => 'apache',
+              'mode'   => '0755',
+              'group'  => 'apache',
+            })
+          }
 
-          #it { is_expected.to contain_service('beats') }
-          #it { is_expected.to contain_package('apachetop').with_ensure('installed') }
+          it { is_expected.to contain_package('owncloud').with_ensure('installed') }
+          it { is_expected.to contain_package('php').with_ensure('installed') }
+          it { is_expected.to contain_package('php-ldap').with_ensure('installed') }
+          it { is_expected.to contain_package('php-mysqlnd').with_ensure('installed') }
+          it { is_expected.to contain_package('fail2ban').with_ensure('installed') }
+          it { is_expected.to contain_package('sendmail').with_ensure('installed') }
+
+          it { is_expected.to contain_service('httpd').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
+          it { is_expected.to contain_service('mysqld').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
+          it { is_expected.to contain_service('sendmail').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
+          it { is_expected.to contain_service('fail2ban').with(
+                'ensure'     => 'running',
+                'enable'     => 'true',
+                'hasrestart' => 'true',
+               ) }
+
+
+
+
         end
       end
     end
@@ -54,11 +89,10 @@ describe 'owncloudstack' do
          :architecture              => 'x86_64',
        }}
        it {
-#         is_expected.to contain_class('beats::repo::yum')
-#         is_expected.to contain_class('beats::repo::yum').that_comes_before('beats::package')
 
-#         is_expected.to contain_package('GeoIP').with_ensure('latest')
-#         is_expected.to contain_package('libpcap').with_ensure('installed')
+         it { is_expected.to contain_package('mysql-community-server').with_ensure('installed') }
+         it { is_expected.to contain_package('httpd').with_ensure('installed') }
+
        }
     end
   end
@@ -70,12 +104,10 @@ describe 'owncloudstack' do
          :lsbdistid                 => 'Debian'
        }}
        it {
-#         is_expected.to contain_class('beats::repo::apt')
-#         is_expected.to contain_class('beats::repo::apt').that_comes_before('beats::package')
 
-#         is_expected.to contain_package('geoip-database-contrib').with_ensure('latest')
-#         is_expected.to contain_package('apt-transport-https').with_ensure('latest')
-#         is_expected.to contain_package('libpcap0.8').with_ensure('installed')
+         is_expected.to contain_package('apache2.2-bin').with_ensure('installed')
+         is_expected.to contain_package('apache2-utils').with_ensure('installed')
+
        }
     end
   end
@@ -87,12 +119,10 @@ describe 'owncloudstack' do
          :lsbdistid                 => 'Ubuntu'
        }}
        it {
-#         is_expected.to contain_class('beats::repo::apt')
-#         is_expected.to contain_class('beats::repo::apt').that_comes_before('beats::package')
 
-#         is_expected.to contain_package('geoip-database-contrib').with_ensure('latest')
-#         is_expected.to contain_package('apt-transport-https').with_ensure('latest')
-#         is_expected.to contain_package('libpcap0.8').with_ensure('installed')
+         is_expected.to contain_package('apache2.2-bin').with_ensure('installed')
+         is_expected.to contain_package('apache2-utils').with_ensure('installed')
+ 
        }
     end
   end
