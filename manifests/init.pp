@@ -47,41 +47,6 @@ $mysql_override_options = {},
     fail("${::osfamily} not supported")
   }
 
-  class { '::owncloudstack::system':
-  }
-
-  class { '::mysql::server':
-    override_options => $mysql_override_options_merged,
-    package_name     => 'mysql-community-server',
-    package_ensure   => 'installed',
-    service_enabled  => true,
-    restart          => true,
-    require          => $require_mysql_server,
-  }
-
-    # slow query log
-    file { 'mysql-server slow query log':
-      ensure    => present,
-      path      => '/var/log/mysql-slow.log',
-      owner     => 'mysql',
-      group     => 'mysql',
-      mode      => '0640',
-      subscribe => Service['mysqld'],
-    }
-
-    # logrotate for mysql slow-query log
-    file { 'mysql-server slow query log logrotate':
-      ensure  => present,
-      path    => '/etc/logrotate.d/mysql-slow',
-      content => template('owncloudstack/logrotate.conf.mysql-slow.erb'),
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0644',
-    }
-
-  class { '::sendmail':
-  }
-
   if ($owncloud_version == '8.2'){
     $owncloud_manage_repo=false
   }
@@ -92,14 +57,10 @@ $mysql_override_options = {},
     $owncloud_manage_repo=true
   }
 
-  class { '::owncloud':
-    manage_repo   => $owncloud_manage_repo,
-    manage_apache => $manage_apache,
-    manage_vhost  => $manage_vhost,
-    #manage_phpmysql => false,
-  }
-
-  class{ '::owncloudstack::services':
-  }
+  class { '::owncloudstack::system': } ->
+  class { '::owncloudstack::services': } ->
+  class { '::owncloudstack::mysql': } ->
+  class { '::owncloudstack::owncloud': } ->
+  Class['::owncloudstack']
 
 }

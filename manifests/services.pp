@@ -87,4 +87,11 @@ class owncloudstack::services ()
     require => Package['cron'],
   }
 
+  #
+  # sendmail
+  #
+
+  class { '::sendmail':
+  }
+
 }
