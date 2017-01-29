@@ -74,6 +74,7 @@ describe 'owncloudstack' do
          :operatingsystemmajrelease => '6',
          :operatingsystemrelease    => '6.8',
          :architecture              => 'x86_64',
+         :is_virtual                => true
        }}
 
          it { is_expected.to contain_package('mysql-community-server').with_ensure('installed') }
