@@ -10,16 +10,23 @@ class owncloudstack::system ()
 
   include ::timezone
 
+  if($::owncloudstack::manage_fail2ban){
 
-  if($::operatingsystem == ubuntu or $::operatingsystem == 'debian') {
-
-    class { '::fail2ban':
-      package_ensure       => 'latest',
-      config_file_template => "fail2ban/${::lsbdistcodename}/etc/fail2ban/jail.conf.erb",
-      bantime              => 3600,
-      require              => Class['::sendmail'],
+    if($::operatingsystem == ubuntu or $::operatingsystem == 'debian') {
+      class { '::fail2ban':
+        package_ensure       => 'latest',
+        config_file_template => "fail2ban/${::lsbdistcodename}/etc/fail2ban/jail.conf.erb",
+        bantime              => 3600,
+        require              => Class['::sendmail'],
+      }
     }
-
+    else{
+      class { '::fail2ban':
+        package_ensure       => 'latest',
+        bantime              => 3600,
+        require              => Class['::sendmail'],
+      }
+    }
   }
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
