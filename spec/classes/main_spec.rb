@@ -72,6 +72,7 @@ describe 'owncloudstack' do
          :osfamily                  => 'RedHat',
          :operatingsystem           => 'RedHat',
          :operatingsystemmajrelease => '6',
+         :operatingsystemrelease    => '6.8',
          :architecture              => 'x86_64',
        }}
 
