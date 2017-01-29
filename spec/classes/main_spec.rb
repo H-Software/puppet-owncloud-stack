@@ -74,7 +74,6 @@ describe 'owncloudstack' do
          :operatingsystemmajrelease => '6',
          :architecture              => 'x86_64',
        }}
-       it {
 
          it { is_expected.to contain_package('mysql-community-server').with_ensure('installed') }
          it { is_expected.to contain_package('httpd').with_ensure('installed') }
@@ -86,7 +85,7 @@ describe 'owncloudstack' do
                 'hasrestart' => 'true',
                ) }
 
-          it { is_expected.to contain_file('/var/www/html/owncloud').with({
+         it { is_expected.to contain_file('/var/www/html/owncloud').with({
               'ensure' => 'directory',
               'owner'  => 'apache',
               'mode'   => '0755',
@@ -94,9 +93,6 @@ describe 'owncloudstack' do
             })
           }
 
-
-
-       }
     end
   end
 
@@ -110,15 +106,17 @@ describe 'owncloudstack' do
 
          is_expected.to contain_package('apache2.2-bin').with_ensure('installed')
          is_expected.to contain_package('apache2-utils').with_ensure('installed')
-         it { is_expected.to contain_package('sendmail-bin').with_ensure('installed') }
+       }
 
-         it { is_expected.to contain_service('apache2').with(
+       it { is_expected.to contain_package('sendmail-bin').with_ensure('installed') }
+
+       it { is_expected.to contain_service('apache2').with(
                 'ensure'     => 'running',
                 'enable'     => 'true',
                 'hasrestart' => 'true',
                ) }
 
-          it { is_expected.to contain_file('/var/www/html/owncloud').with({
+       it { is_expected.to contain_file('/var/www/html/owncloud').with({
               'ensure' => 'directory',
               'owner'  => 'www-data',
               'mode'   => '0755',
@@ -126,8 +124,6 @@ describe 'owncloudstack' do
             })
           }
 
-
-       }
     end
   end
 
@@ -138,27 +134,24 @@ describe 'owncloudstack' do
          :lsbdistid                 => 'Ubuntu'
        }}
        it {
-
          is_expected.to contain_package('apache2.2-bin').with_ensure('installed')
          is_expected.to contain_package('apache2-utils').with_ensure('installed')
-         it { is_expected.to contain_package('sendmail-bin').with_ensure('installed') }
+       }
+       it { is_expected.to contain_package('sendmail-bin').with_ensure('installed') }
  
-         it { is_expected.to contain_service('apache2').with(
+       it { is_expected.to contain_service('apache2').with(
                 'ensure'     => 'running',
                 'enable'     => 'true',
                 'hasrestart' => 'true',
                ) }
 
-         it { is_expected.to contain_file('/var/www/html/owncloud').with({
+       it { is_expected.to contain_file('/var/www/html/owncloud').with({
               'ensure' => 'directory',
               'owner'  => 'www-data',
               'mode'   => '0755',
               'group'  => 'www-data',
             })
           }
-
-
-       }
     end
   end
 
