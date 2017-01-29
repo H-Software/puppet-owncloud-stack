@@ -26,6 +26,14 @@ $mysql_override_options = {},
 
   $mysql_override_options_merged = deep_merge($mysql_override_options, $mysql_override_options_profile)
 
+  validate_bool($manage_apache)
+
+  validate_bool($manage_vhost)
+
+  validate_bool($manage_clamav)
+
+  validate_bool($manage_fail2ban)
+
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
       versioncmp($::operatingsystemrelease, '6') and
       versioncmp($::operatingsystemrelease, '7') < 1
