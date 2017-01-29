@@ -42,6 +42,7 @@ class owncloudstack::system ()
     if ! defined(Package['epel-release']){
       package { 'epel-release':
         ensure => 'latest',
+        before => Class['::owncloud'],
       }
     }
 
@@ -58,6 +59,7 @@ class owncloudstack::system ()
       section => 'base',
       setting => 'exclude',
       value   => 'php-*',
+      before => Class['::owncloud'],
     }
 
     ini_setting { 'centos base repo exclude php packages2':
@@ -67,23 +69,24 @@ class owncloudstack::system ()
       setting => 'exclude',
       value   => 'php-*',
       require => Ini_setting['centos base repo exclude php packages'],
+      before => Class['::owncloud'],
     }
 
-    if ! defined(Yumrepo['remi-php56']){
+    #if ! defined(Yumrepo['remi-php56']){
 
-      yumrepo { 'remi-php56':
-        name       => 'remi-php56',
-        descr      => 'Les RPM de remi de PHP 5.6 pour Enterprise Linux 6 - $basearch',
-        baseurl    => absent,
-        mirrorlist => 'http://rpms.famillecollet.com/enterprise/6/php56/mirror',
-        gpgcheck   => 1,
-        gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
-        enabled    => 1,
-        before     => Class['owncloud'],
-        require    => [ Class['::remi'], Ini_setting['centos base repo exclude php packages2'], ],
-      }
+    #  yumrepo { 'remi-php56':
+    #    name       => 'remi-php56',
+    #    descr      => 'Les RPM de remi de PHP 5.6 pour Enterprise Linux 6 - $basearch',
+    #    baseurl    => absent,
+    #    mirrorlist => 'http://rpms.famillecollet.com/enterprise/6/php56/mirror',
+    #    gpgcheck   => 1,
+    #    gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
+    #    enabled    => 1,
+    #    before     => Class['owncloud'],
+    #    require    => [ Class['::remi'], Ini_setting['centos base repo exclude php packages2'], ],
+    #  }
 
-    }
+    #}
 
     # changes for owncloud 9.x
     #
