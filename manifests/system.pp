@@ -68,7 +68,7 @@ class owncloudstack::system ()
       setting => 'exclude',
       value   => 'php-*',
       require => Ini_setting['centos base repo exclude php packages'],
-}
+    }
 
     #if ! defined(Yumrepo['remi-php56']){
 
