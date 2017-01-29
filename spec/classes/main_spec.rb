@@ -109,9 +109,9 @@ describe 'owncloudstack' do
 
          it { is_expected.to contain_file('/var/www/html/owncloud').with({
               'ensure' => 'directory',
-              'owner'  => 'apache',
-              'mode'   => '0755',
-              'group'  => 'apache',
+              'owner'  => 'root',
+              #'mode'   => '0755',
+              'group'  => 'root',
             })
           }
 
@@ -124,6 +124,7 @@ describe 'owncloudstack' do
          :osfamily                  => 'Debian',
          :lsbdistid                 => 'Debian',
          :operatingsystem           => 'Debian',
+         :operatingsystemrelease    => '7.11',
          :lsbdistcodename           => 'wheezy',
          :ipaddress                 => '10.42.42.42',
          :is_virtual                => true
