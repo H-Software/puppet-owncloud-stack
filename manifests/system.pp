@@ -27,7 +27,10 @@ class owncloudstack::system ()
     versioncmp($::operatingsystemrelease, '7') < 1
     ) {
 
-    include ::remi
+    #include ::remi
+    class { 'remi':
+      before => Class['::owncloud'],
+    }
 
     if ! defined(Package['epel-release']){
       package { 'epel-release':
