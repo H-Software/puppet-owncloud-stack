@@ -74,6 +74,7 @@ describe 'owncloudstack' do
          :operatingsystemmajrelease => '6',
          :operatingsystemrelease    => '6.8',
          :architecture              => 'x86_64',
+         :ipaddress                 => '10.42.42.42',
          :is_virtual                => true
        }}
 
@@ -124,6 +125,7 @@ describe 'owncloudstack' do
          :lsbdistid                 => 'Debian',
          :operatingsystem           => 'Debian',
          :lsbdistcodename           => 'wheezy',
+         :ipaddress                 => '10.42.42.42',
          :is_virtual                => true
        }}
        it {
@@ -183,6 +185,7 @@ describe 'owncloudstack' do
          :lsbdistid                 => 'Ubuntu',
          :operatingsystem           => 'Ubuntu',
          :lsbdistcodename           => 'precise',
+         :ipaddress                 => '10.42.42.42',
          :is_virtual                => true
        }}
        it {
