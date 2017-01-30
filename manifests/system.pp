@@ -179,9 +179,8 @@ class owncloudstack::system ()
     }
 
     apt::ppa { 'ppa:ondrej/mysql-5.6':
-      require => [  Package['software-properties-common'],
-                    Package['python-software-properties'],
-                 ],
+      require => [Package['software-properties-common'],
+                  Package['python-software-properties'] ],
     }
 
   }
