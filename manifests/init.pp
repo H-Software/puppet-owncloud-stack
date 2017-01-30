@@ -44,7 +44,7 @@ $php_extra_modules = [],
     $mysql_server_package = 'mysql-community-server'
   }
   elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
-    $require_mysql_server = [ apt::ppa['ppa:ondrej/mysql-5.6'] ]
+    $require_mysql_server = []
     $documentroot = '/var/www/owncloud'
     $mysql_server_package = 'mysql-server'
   }
