@@ -66,7 +66,7 @@ $php_extra_modules = {},
   class { '::owncloudstack::services': } ->
   class { '::owncloudstack::mysql': } ->
   class { '::owncloudstack::owncloud': } ->
-  class { '::owncloudstack::php'} ->
+  class { '::owncloudstack::php': } ->
   Class['::owncloudstack']
 
 }
