@@ -164,7 +164,7 @@ class owncloudstack::system ()
     }
 
   }
-  else{
+  elseif($::operatingsystem == 'ubuntu'){
 
     if ! defined(Package['software-properties-common']){
       package {'software-properties-common':
