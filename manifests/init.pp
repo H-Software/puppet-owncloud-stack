@@ -10,6 +10,7 @@ $manage_vhost=true,
 $manage_clamav=true,
 $manage_fail2ban=true,
 $mysql_override_options = {},
+$php_extra_modules = [],
 )
 {
 
@@ -40,10 +41,12 @@ $mysql_override_options = {},
     ) {
     $require_mysql_server = Package['mysql-repo']
     $documentroot = '/var/www/html/owncloud'
+    $mysql_server_package = 'mysql-community-server'
   }
   elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
     $require_mysql_server = []
     $documentroot = '/var/www/owncloud'
+    $mysql_server_package = 'mysql-server'
   }
   else{
     fail("${::osfamily} not supported")
@@ -63,6 +66,7 @@ $mysql_override_options = {},
   class { '::owncloudstack::services': } ->
   class { '::owncloudstack::mysql': } ->
   class { '::owncloudstack::owncloud': } ->
+  class { '::owncloudstack::php': } ->
   Class['::owncloudstack']
 
 }

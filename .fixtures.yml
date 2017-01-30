@@ -45,6 +45,9 @@ fixtures:
     staging:
       ref: '2.1.0'
       repo: puppet/staging
+    php:
+      ref: '1.2.0'
+      repo: thias/php
     owncloud:
       ref: '0.5.2'
       repo: shoekstra/owncloud
