@@ -5,8 +5,8 @@
 #########################################################
 class owncloudstack::php ()
 {
-
-  php::module { $::owncloudstack::php_extra_modules:
+  if $::owncloudstack::php_extra_modules != undef {
+    php::module { $::owncloudstack::php_extra_modules:
+    }
   }
-
 }
