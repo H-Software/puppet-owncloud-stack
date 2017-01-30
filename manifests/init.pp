@@ -10,6 +10,7 @@ $manage_vhost=true,
 $manage_clamav=true,
 $manage_fail2ban=true,
 $mysql_override_options = {},
+$php_extra_modules = {},
 )
 {
 
@@ -63,6 +64,7 @@ $mysql_override_options = {},
   class { '::owncloudstack::services': } ->
   class { '::owncloudstack::mysql': } ->
   class { '::owncloudstack::owncloud': } ->
+  class { '::owncloudstack::php'} ->
   Class['::owncloudstack']
 
 }
