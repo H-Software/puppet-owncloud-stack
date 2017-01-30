@@ -164,6 +164,27 @@ class owncloudstack::system ()
     }
 
   }
+  else{
+
+    if ! defined(Package['software-properties-common']){
+      package {'software-properties-common':
+        ensure => 'installed',
+      }
+    }
+
+    if ! defined(Package['python-software-properties']){
+      package {'python-software-properties':
+        ensure => 'installed',
+      }
+    }
+
+    apt::ppa { 'ppa:ondrej/mysql-5.6':
+      require => [ Package['software-properties-common'],
+                   Package['python-software-properties'],
+                 ]
+    }
+
+  }
 
   package{ 'office package':
     ensure => latest,

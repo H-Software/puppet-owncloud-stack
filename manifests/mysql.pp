@@ -8,7 +8,7 @@ class owncloudstack::mysql ()
 
   class { '::mysql::server':
     override_options => $::owncloudstack::mysql_override_options_merged,
-    package_name     => 'mysql-community-server',
+    package_name     => $::owncloudstack::mysql_server_package,
     package_ensure   => 'installed',
     service_enabled  => true,
     restart          => true,

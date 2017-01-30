@@ -41,10 +41,12 @@ $php_extra_modules = {},
     ) {
     $require_mysql_server = Package['mysql-repo']
     $documentroot = '/var/www/html/owncloud'
+    $mysql_server_package = 'mysql-community-server'
   }
   elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
-    $require_mysql_server = []
+    $require_mysql_server = apt::ppa['ppa:ondrej/mysql-5.6']
     $documentroot = '/var/www/owncloud'
+    $mysql_server_package = 'mysql-server'
   }
   else{
     fail("${::osfamily} not supported")
