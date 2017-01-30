@@ -10,7 +10,7 @@ $manage_vhost=true,
 $manage_clamav=true,
 $manage_fail2ban=true,
 $mysql_override_options = {},
-$php_extra_modules = {},
+$php_extra_modules = [],
 )
 {
 

@@ -11,6 +11,6 @@
 #
 class {'::owncloudstack':
   owncloud_version => '9',
-  php_extra_modules = ['php-opcache', 'php-pecl-apcu', 'php-redis']
+  php_extra_modules => ['php-opcache', 'php-pecl-apcu', 'php-redis'],
 }
 
