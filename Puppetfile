@@ -41,6 +41,8 @@ mod 'puppetlabs-concat', '2.2.0'
 
 mod 'puppet-staging', '2.1.0'
 
+mod 'thias-php', '1.2.0'
+
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
   :tag => '4.12.0'
