@@ -187,8 +187,8 @@ class owncloudstack::system ()
   }
 
   package{ 'office package':
-    ensure => latest,
-    name   => 'libreoffice',
+    ensure => installed,
+    name   => $::owncloudstack::libreoffice_pkg_name,
   }
 
 }

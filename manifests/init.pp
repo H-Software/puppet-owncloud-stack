@@ -11,6 +11,7 @@ $manage_clamav=true,
 $manage_fail2ban=true,
 $mysql_override_options = {},
 $php_extra_modules = [],
+$libreoffice_pkg_name="libreoffice",
 )
 {
 
