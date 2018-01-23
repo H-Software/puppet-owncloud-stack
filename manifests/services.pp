@@ -13,7 +13,7 @@ class owncloudstack::services ()
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
       versioncmp($::operatingsystemrelease, '6') and
-      versioncmp($::operatingsystemrelease, '7') < 1
+      versioncmp($::operatingsystemrelease, '7')
     ) {
     $packages_clamav = ['clamav', 'clamd', 'clamav-db']
     $service_clamav = 'clamd'
@@ -53,7 +53,7 @@ class owncloudstack::services ()
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
     versioncmp($::operatingsystemrelease, '6') and
-    versioncmp($::operatingsystemrelease, '7') < 1
+    versioncmp($::operatingsystemrelease, '7') 
     ) {
     $package_name = 'cronie'
     $service_name = 'crond'

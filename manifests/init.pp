@@ -38,7 +38,7 @@ $libreoffice_pkg_name="libreoffice",
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
       versioncmp($::operatingsystemrelease, '6') and
-      versioncmp($::operatingsystemrelease, '7') < 1
+      versioncmp($::operatingsystemrelease, '7')
     ) {
     $require_mysql_server = Package['mysql-repo']
     $documentroot = '/var/www/html/owncloud'

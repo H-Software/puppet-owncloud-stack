@@ -31,7 +31,7 @@ class owncloudstack::system ()
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
     versioncmp($::operatingsystemrelease, '6') and
-    versioncmp($::operatingsystemrelease, '7') < 1
+    versioncmp($::operatingsystemrelease, '7')
     ) {
 
     #include ::remi
