@@ -91,7 +91,9 @@ class owncloudstack::services ()
   # sendmail
   #
 
-  class { '::sendmail':
+  if($::owncloudstack::manage_sendmail){
+    class { '::sendmail':
+    }
   }
 
 }
