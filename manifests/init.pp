@@ -42,7 +42,7 @@ $libreoffice_pkg_name="libreoffice",
       versioncmp($::operatingsystemrelease, '6') and
       versioncmp($::operatingsystemrelease, '7')
     ) {
-      if(versioncmp($::operatingsystemrelease, '7')){
+      if(versioncmp($::operatingsystemrelease, '7') == 0){
         $mysql_repo_source_url = 'https://repo.mysql.com/mysql-community-release-el7.rpm'
       }
       else{
