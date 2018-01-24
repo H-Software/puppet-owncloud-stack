@@ -46,7 +46,7 @@ $libreoffice_pkg_name="libreoffice",
         $mysql_repo_source_url = 'https://repo.mysql.com/mysql-community-release-el6.rpm'
       }
       else {
-        fail("${::osfamily} not supported")
+        fail("version ${::operatingsystemrelease} of ${::osfamily} not supported")
       }
 
       $require_mysql_server = Package['mysql-repo']
