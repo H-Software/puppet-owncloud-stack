@@ -1,5 +1,5 @@
 #########################################################
-#                                                       
+#
 # owncloudstack class
 #
 #########################################################
@@ -43,10 +43,10 @@ $libreoffice_pkg_name="libreoffice",
       versioncmp($::operatingsystemrelease, '7')
     ) {
       if(versioncmp($::operatingsystemrelease, '7')){
-        $mysql_repo_source = 'http://repo.mysql.com/mysql-community-release-el7.rpm'
+        $mysql_repo_source_url = 'http://repo.mysql.com/mysql-community-release-el7.rpm'
       }
       else{
-        $mysql_repo_source = 'http://repo.mysql.com/mysql-community-release-el6.rpm'
+        $mysql_repo_source_url = 'http://repo.mysql.com/mysql-community-release-el6.rpm'
       }
       $require_mysql_server = Package['mysql-repo']
       $documentroot = '/var/www/html/owncloud'
