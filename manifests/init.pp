@@ -50,12 +50,12 @@ $libreoffice_pkg_name="libreoffice",
       }
       $require_mysql_server = Package['mysql-repo']
       $documentroot = '/var/www/html/owncloud'
-      $::owncloudstack::mysql_server_package = 'mysql-community-server'
+      $mysql_server_package = 'mysql-community-server'
   }
   elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
     $require_mysql_server = []
     $documentroot = '/var/www/owncloud'
-    $::owncloudstack::mysql_server_package = 'mysql-server'
+    $mysql_server_package = 'mysql-server'
   }
   else{
     fail("${::osfamily} not supported")
