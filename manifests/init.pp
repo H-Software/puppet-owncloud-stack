@@ -38,16 +38,17 @@ $libreoffice_pkg_name="libreoffice",
 
   validate_bool($manage_fail2ban)
 
-  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
-      versioncmp($::operatingsystemrelease, '6') and
-      versioncmp($::operatingsystemrelease, '7')
-    ) {
+  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
       if(versioncmp($::operatingsystemrelease, '7') == 0){
         $mysql_repo_source_url = 'https://repo.mysql.com/mysql-community-release-el7.rpm'
       }
-      else{
+      elsif (versioncmp($::operatingsystemrelease, '6') == 0){
         $mysql_repo_source_url = 'https://repo.mysql.com/mysql-community-release-el6.rpm'
       }
+      else {
+        fail("${::osfamily} not supported")
+      }
+
       $require_mysql_server = Package['mysql-repo']
       $documentroot = '/var/www/html/owncloud'
       $mysql_server_package = 'mysql-community-server'

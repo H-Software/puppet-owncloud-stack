@@ -11,10 +11,7 @@ class owncloudstack::services ()
   # Antivirus part
   #
 
-  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
-      versioncmp($::operatingsystemrelease, '6') and
-      versioncmp($::operatingsystemrelease, '7')
-    ) {
+  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
     $packages_clamav = ['clamav', 'clamd', 'clamav-db']
     $service_clamav = 'clamd'
   }
@@ -51,10 +48,7 @@ class owncloudstack::services ()
   # Cron part
   #
 
-  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
-    versioncmp($::operatingsystemrelease, '6') and
-    versioncmp($::operatingsystemrelease, '7') 
-    ) {
+  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
     $package_name = 'cronie'
     $service_name = 'crond'
     $apache_user  = 'apache'

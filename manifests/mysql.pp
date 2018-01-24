@@ -6,10 +6,7 @@
 class owncloudstack::mysql ()
 {
 
-  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
-      versioncmp($::operatingsystemrelease, '6') and
-      versioncmp($::operatingsystemrelease, '7')
-    ) {
+  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
 
       if($::owncloudstack::mysql_server_version == '5.7'){
         # update repos
