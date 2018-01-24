@@ -11,6 +11,7 @@ $manage_clamav=true,
 $manage_fail2ban=true,
 $manage_sendmail=true,
 $mysql_override_options = {},
+$mysql_server_version='5.7',
 $php_extra_modules = [],
 $libreoffice_pkg_name="libreoffice",
 )
