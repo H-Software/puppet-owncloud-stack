@@ -19,6 +19,16 @@ class owncloudstack::mysql ()
           section => 'mysql57-community',
           setting => 'enabled',
           value   => '1',
+          require => Package['mysql-repo'],
+        }
+
+        ini_setting { 'mysql 5.6 repo disable':
+          ensure  => present,
+          path    => '/etc/yum.repos.d/mysql-community.repo',
+          section => 'mysql56-community',
+          setting => 'enabled',
+          value   => '0',
+          require => Package['mysql-repo'],
   class { '::mysql::server':
     override_options => $::owncloudstack::mysql_override_options_merged,
     package_name     => $::owncloudstack::mysql_server_package,
