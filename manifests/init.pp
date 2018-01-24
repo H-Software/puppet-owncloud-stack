@@ -39,14 +39,14 @@ $libreoffice_pkg_name="libreoffice",
   validate_bool($manage_fail2ban)
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
-      if(versioncmp($::operatingsystemrelease, '7') == 0){
+      if(versioncmp($::operatingsystemmajrelease, '7') == 0){
         $mysql_repo_source_url = 'https://repo.mysql.com/mysql-community-release-el7.rpm'
       }
-      elsif (versioncmp($::operatingsystemrelease, '6') == 0){
+      elsif (versioncmp($::operatingsystemmajrelease, '6') == 0){
         $mysql_repo_source_url = 'https://repo.mysql.com/mysql-community-release-el6.rpm'
       }
       else {
-        fail("version ${::operatingsystemrelease} of ${::osfamily} not supported")
+        fail("version ${::operatingsystemmajrelease} of ${::osfamily} not supported")
       }
 
       $require_mysql_server = Package['mysql-repo']
