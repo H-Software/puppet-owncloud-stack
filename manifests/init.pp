@@ -41,9 +41,11 @@ $libreoffice_pkg_name="libreoffice",
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
       if(versioncmp($::operatingsystemmajrelease, '7') == 0){
         $mysql_repo_source_url = 'https://repo.mysql.com/mysql-community-release-el7.rpm'
+        $mysql_server_service_name = 'mysqld'
       }
       elsif (versioncmp($::operatingsystemmajrelease, '6') == 0){
         $mysql_repo_source_url = 'https://repo.mysql.com/mysql-community-release-el6.rpm'
+        $mysql_server_service_name = undef
       }
       else {
         fail("version ${::operatingsystemmajrelease} of ${::osfamily} not supported")
@@ -57,6 +59,7 @@ $libreoffice_pkg_name="libreoffice",
     $require_mysql_server = []
     $documentroot = '/var/www/owncloud'
     $mysql_server_package = 'mysql-server'
+    $mysql_server_service_name = undef
   }
   else{
     fail("${::osfamily} not supported")

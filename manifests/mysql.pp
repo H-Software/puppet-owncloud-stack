@@ -53,6 +53,7 @@ class owncloudstack::mysql ()
   class { '::mysql::server':
     override_options => $::owncloudstack::mysql_override_options_merged,
     package_name     => $::owncloudstack::mysql_server_package,
+    service_name     => $::owncloudstack::mysql_server_service_name,
     package_ensure   => 'installed',
     service_enabled  => true,
     restart          => true,
