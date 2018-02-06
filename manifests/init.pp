@@ -13,7 +13,7 @@ $manage_sendmail=true,
 $mysql_override_options = {},
 $mysql_server_version='5.7',
 $php_extra_modules = [],
-$libreoffice_pkg_name="libreoffice",
+$libreoffice_pkg_name='libreoffice',
 )
 {
 
@@ -75,11 +75,11 @@ $libreoffice_pkg_name="libreoffice",
     $owncloud_manage_repo=true
   }
 
-  class { '::owncloudstack::system': } ->
-  class { '::owncloudstack::services': } ->
-  class { '::owncloudstack::mysql': } ->
-  class { '::owncloudstack::owncloud': } ->
-  class { '::owncloudstack::php': } ->
-  Class['::owncloudstack']
+  class { '::owncloudstack::system': }
+  -> class { '::owncloudstack::services': }
+  -> class { '::owncloudstack::mysql': }
+  -> class { '::owncloudstack::owncloud': }
+  -> class { '::owncloudstack::php': }
+  -> Class['::owncloudstack']
 
 }
