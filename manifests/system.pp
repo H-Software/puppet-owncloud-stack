@@ -29,10 +29,7 @@ class owncloudstack::system ()
     }
   }
 
-  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/ and
-    versioncmp($::operatingsystemrelease, '6') and
-    versioncmp($::operatingsystemrelease, '7') < 1
-    ) {
+  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
 
     #include ::remi
     class { '::remi':
@@ -52,7 +49,7 @@ class owncloudstack::system ()
       ensure   => 'installed',
       name     => 'mysql-community-release',
       provider => 'rpm',
-      source   => 'http://repo.mysql.com/mysql-community-release-el6.rpm',
+      source   => $::owncloudstack::mysql_repo_source_url,
     }
 
     ini_setting { 'centos base repo exclude php packages':
