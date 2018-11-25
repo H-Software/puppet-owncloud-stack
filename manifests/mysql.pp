@@ -36,6 +36,28 @@ class owncloudstack::mysql ()
           value   => '0',
           require => Package['mysql-repo'],
         }
+
+        # log folder2
+        file { 'mysql-server log folder2':
+          ensure    => directory,
+          path      => '/var/log/mariadb',
+          owner     => 'mysql',
+          group     => 'mysql',
+          mode      => '0755',
+          subscribe => Service[$::owncloudstack::mysql_server_service_name],
+          require   => Package['mysql-server'],
+        }
+
+        # slow query log2
+        file { 'mysql-server slow query log2':
+          ensure    => present,
+          path      => '/var/log/mariadb/mysql-slow.log',
+          owner     => 'mysql',
+          group     => 'mysql',
+          mode      => '0644',
+          subscribe => Service[$::owncloudstack::mysql_server_service_name],
+          require   => File['mysql-server log folder2'],
+        }
       }
       else{
           # update repos
