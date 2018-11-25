@@ -10,40 +10,42 @@ mod 'shoekstra-owncloud', '0.5.2'
 
 mod 'puppetlabs-ntp', '4.2.0'
 
-mod 'saz-timezone', '3.4.0'
+mod 'saz-timezone', '5.0.2'
 
-mod 'puppetlabs-mysql', '3.10.0'
+mod 'puppetlabs-mysql', '6.2.0'
 
-mod 'puppetlabs-firewall', '1.8.1'
+mod 'puppetlabs-translate', '1.2.0'
 
-mod 'example42-sendmail', '2.0.12'
+mod 'puppetlabs-firewall', '1.14.0'
 
-mod 'example42-puppi', '2.2.1'
+mod 'stm-sendmail', '2.0.0'
 
 #mod 'ckhall-remi', '0.0.2'
-mod 'hfm-remi', '1.4.0'
+mod 'hfm-remi', '1.11.0'
 
-mod 'stahnma-epel', '1.2.2'
+mod 'stahnma-epel', '1.3.1'
 
-mod 'stm-debconf', '1.0.1'
+mod 'stm-debconf', '2.3.0'
 
-mod 'puppetlabs-inifile', '1.5.0'
+mod 'puppetlabs-inifile', '2.4.0'
 
-mod 'dhoppe-fail2ban', '1.3.4'
+mod 'puppet-fail2ban', '2.4.1'
 
-mod 'puppet-extlib', '1.1.0'
+mod 'puppet-extlib', '3.0.0'
 
-mod 'puppetlabs-apt', '2.2.2'
+mod 'puppetlabs-apt', '4.5.1'
 
-mod 'puppetlabs-apache', '1.11.0'
+mod 'puppetlabs-apache', '3.4.0'
 
-mod 'puppetlabs-concat', '2.2.0'
+mod 'puppetlabs-concat', '5.1.0'
 
-mod 'puppet-staging', '2.1.0'
+mod 'puppet-staging', '3.2.0'
 
-mod 'thias-php', '1.2.0'
+mod 'thias-php', '1.2.2'
 
-mod 'stdlib',
-  :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
-  :tag => '4.12.0'
+
+mod 'torrancew-cron', '0.2.1'
+#mod 'puppet-cron', '1.3.1'
+
+mod 'puppetlabs-stdlib', '4.25.1'
 
