@@ -6,9 +6,13 @@
 class owncloudstack::system ()
 {
 
-  include ::ntp
+  if($::owncloudstack::manage_ntp){
+    include ::ntp
+  }
 
-  include ::timezone
+  if($::owncloudstack::manage_timezone){
+    include ::timezone
+  }
 
   if($::owncloudstack::manage_fail2ban){
 

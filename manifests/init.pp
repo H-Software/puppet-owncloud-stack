@@ -10,6 +10,8 @@ $manage_vhost=true,
 $manage_clamav=true,
 $manage_fail2ban=true,
 $manage_sendmail=true,
+$manage_ntp=true,
+$manage_timezone=true,
 $mysql_override_options = {},
 $mysql_server_version='5.7',
 $php_extra_modules = [],
@@ -37,6 +39,10 @@ $libreoffice_pkg_name='libreoffice',
   validate_bool($manage_clamav)
 
   validate_bool($manage_fail2ban)
+
+  validate_bool($manage_ntp)
+
+  validate_bool($manage_timezone)
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
       if(versioncmp($::operatingsystemmajrelease, '7') == 0){
