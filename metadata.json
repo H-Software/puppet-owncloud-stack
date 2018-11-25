@@ -15,7 +15,7 @@
     },
     {
       "name": "saz/timezone",
-      "version_requirement": ">= 3.4.0 < 4.0.0"
+      "version_requirement": ">= 3.4.0 < 6.0.0"
     },
     {
       "name": "example42/sendmail",
@@ -27,7 +27,7 @@
     },
     {
       "name": "puppetlabs/inifile",
-      "version_requirement": ">= 1.5.0 < 2.0.0"
+      "version_requirement": ">= 2.2.0 < 3.0.0"
     },
     {
        "name": "dhoppe/fail2ban",
@@ -51,12 +51,13 @@
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "6"
+        "6",
+        "7"
       ]
     }
   ],
   "project_page": "https://github.com/H-Software/puppet-owncloud-stack",
   "source": "https://github.com/H-Software/puppet-owncloud-stack",
   "summary": "A puppet module to manage owncloud stack",
-  "version": "0.7.1"
+  "version": "0.9.0"
 }
