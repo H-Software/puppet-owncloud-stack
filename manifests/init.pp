@@ -40,6 +40,8 @@ $libreoffice_pkg_name='libreoffice',
 
   validate_bool($manage_fail2ban)
 
+  validate_bool($manage_sendmail)
+
   validate_bool($manage_ntp)
 
   validate_bool($manage_timezone)
@@ -61,12 +63,6 @@ $libreoffice_pkg_name='libreoffice',
       $documentroot = '/var/www/html/owncloud'
       $mysql_server_package = 'mysql-community-server'
   }
-  elsif ($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian'){
-    $require_mysql_server = []
-    $documentroot = '/var/www/owncloud'
-    $mysql_server_package = 'mysql-server'
-    $mysql_server_service_name = undef
-  }
   else{
     fail("${::osfamily} not supported")
   }
@@ -74,11 +70,11 @@ $libreoffice_pkg_name='libreoffice',
   if ($owncloud_version == '8.2'){
     $owncloud_manage_repo=false
   }
-  elsif ($owncloud_version == '9'){
+  elsif ($owncloud_version == '9' or $owncloud_version == '10'){
     $owncloud_manage_repo=true
   }
   else{
-    $owncloud_manage_repo=true
+    fail("owncloud version ${owncloud_version} not supported")
   }
 
   class { '::owncloudstack::system': }

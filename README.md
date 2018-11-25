@@ -1,8 +1,7 @@
-# puppet-owncloud-stack
+# puppet-owncloudstack
 puppet module for OwnCloud Stack
 
-tested on Ubuntu 12.04 LTS
-tested on Centos 6.6 x64_64
+tested on Centos 6.x x86_64, CentOS 7.x x86_64
 
 ### Authors
 
@@ -12,54 +11,18 @@ tested on Centos 6.6 x64_64
 
 * install packages: git, puppet (puppet module)
 
-```
-linux#wget https://raw.githubusercontent.com/czhujer/puppet-bootstrap/master/ubuntu.sh
-linux# bash ubuntu.sh
-```
-
-* install puppet modules
+* install main module
 
 ```
-linux# puppet module install shoekstra-owncloud
+linux# cd /etc/puppet/modules && git clone https://github.com/czhujer/puppet-owncloud-stack.git owncloudstack;
 ```
 
-```
-linux# puppet module install dhoppe-fail2ban
-```
+* install other modules
 
 ```
-linux# puppet module install puppetlabs-ntp
+linux# cd owncloudstack && r10k puppetfile install -v
 ```
 
-```
-linux# puppet module install example42-timezone
-```
+### Usage
 
-```
-linux# puppet module install example42-sendmail
-```
-
-* install owncloud-stack
-
-```
-linux# cd /etc/puppet/modules; git clone https://github.com/czhujer/puppet-owncloud-stack.git; mv puppet-owncloud-stack/ owncloud-stack/;
-```
-
-** on CentOS - install next module(s)
-
-```
-linux# puppet module install --ignore-dependencies ckhall-remi
-linux# puppet module install puppetlabs-inifile
-```
-
-### Using
-
-* set hiera data
-
-* run manifest
-
-```
-linux# puppet apply /etc/puppet/modules/owncloud-stack/manifests/init.pp
-```
-
-* enjoy it >]
+Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here.

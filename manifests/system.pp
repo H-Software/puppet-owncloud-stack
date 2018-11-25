@@ -1,7 +1,7 @@
 #########################################################
-#                                                       
+#
 # owncloudstack::system
-#    
+#
 #########################################################
 class owncloudstack::system ()
 {
@@ -15,21 +15,10 @@ class owncloudstack::system ()
   }
 
   if($::owncloudstack::manage_fail2ban){
-
-    if($::operatingsystem == ubuntu or $::operatingsystem == 'debian') {
-      class { '::fail2ban':
-        package_ensure       => 'latest',
-        config_file_template => "fail2ban/${::lsbdistcodename}/etc/fail2ban/jail.conf.erb",
-        bantime              => 3600,
-        require              => Class['::sendmail'],
-      }
-    }
-    else{
-      class { '::fail2ban':
-        package_ensure => 'latest',
-        bantime        => 3600,
-        require        => Class['::sendmail'],
-      }
+    class { '::fail2ban':
+      package_ensure => 'latest',
+      bantime        => 3600,
+      require        => Class['::sendmail'],
     }
   }
 
@@ -165,27 +154,6 @@ class owncloudstack::system ()
     }
 
   }
-  elsif($::operatingsystem == 'ubuntu'){
-
-    if ! defined(Package['software-properties-common']){
-      package {'software-properties-common':
-        ensure => 'installed',
-      }
-    }
-
-    if ! defined(Package['python-software-properties']){
-      package {'python-software-properties':
-        ensure => 'installed',
-      }
-    }
-
-    apt::ppa { 'ppa:ondrej/mysql-5.6':
-      require => [Package['software-properties-common'],
-                  Package['python-software-properties'] ],
-      before  => Class['::mysql::server'],
-    }
-
-  }
 
   package{ 'office package':
     ensure => installed,
@@ -193,4 +161,3 @@ class owncloudstack::system ()
   }
 
 }
-

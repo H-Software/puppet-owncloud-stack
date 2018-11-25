@@ -1,8 +1,8 @@
 #########################################################
-#                                                       
-# owncloudstack::services class 
 #
-#########################################################    
+# owncloudstack::services class
+#
+#########################################################
 
 class owncloudstack::services ()
 {
@@ -11,28 +11,12 @@ class owncloudstack::services ()
   # Antivirus part
   #
 
-  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
-    $packages_clamav = ['clamav', 'clamd', 'clamav-db']
-    $service_clamav = 'clamd'
-  }
-  else{
-    $packages_clamav = ['clamav', 'clamav-base', 'clamav-daemon', 'clamav-freshclam']
-    $service_clamav = 'clamav-daemon'
-  }
+  $packages_clamav = ['clamav', 'clamd', 'clamav-db']
+  $service_clamav = 'clamd'
 
   if($::owncloudstack::manage_clamav){
     package { $packages_clamav:
       ensure => latest,
-    }
-
-    if($::operatingsystem == 'ubuntu' or $::operatingsystem == 'debian') {
-
-      service { 'clamav-freshclam':
-        ensure  => running,
-        enable  => true,
-        require => Package[$packages_clamav],
-      }
-
     }
 
     service { 'clamav-daemon':
@@ -47,18 +31,9 @@ class owncloudstack::services ()
   #
   # Cron part
   #
-
-  if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
-    $package_name = 'cronie'
-    $service_name = 'crond'
-    $apache_user  = 'apache'
-  }
-  else
-  {
-    $package_name = 'cron'
-    $service_name = 'cron'
-    $apache_user  = 'www-run'
-  }
+  $package_name = 'cronie'
+  $service_name = 'crond'
+  $apache_user  = 'apache'
 
   package {'cron':
       ensure => 'present',
