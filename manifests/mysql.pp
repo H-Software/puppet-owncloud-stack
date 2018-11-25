@@ -27,6 +27,15 @@ class owncloudstack::mysql ()
           value   => '0',
           require => Package['mysql-repo'],
         }
+
+        ini_setting { 'mysql 8.0 repo disable':
+          ensure  => present,
+          path    => '/etc/yum.repos.d/mysql-community.repo',
+          section => 'mysql80-community',
+          setting => 'enabled',
+          value   => '0',
+          require => Package['mysql-repo'],
+        }
       }
       else{
           # update repos
@@ -43,6 +52,15 @@ class owncloudstack::mysql ()
             ensure  => present,
             path    => '/etc/yum.repos.d/mysql-community.repo',
             section => 'mysql57-community',
+            setting => 'enabled',
+            value   => '0',
+            require => Package['mysql-repo'],
+          }
+
+          ini_setting { 'mysql 8.0 repo disable':
+            ensure  => present,
+            path    => '/etc/yum.repos.d/mysql-community.repo',
+            section => 'mysql80-community',
             setting => 'enabled',
             value   => '0',
             require => Package['mysql-repo'],
