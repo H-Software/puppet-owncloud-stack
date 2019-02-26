@@ -24,11 +24,24 @@ class owncloudstack::system ()
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
 
+    if ($::owncloudstack::php_version == '5.6'){
+      $remi_php56_enabled = '1'
+      $remi_php71_enabled = '0'
+    }
+    elsif ($::owncloudstack::php_version == '7.1'){
+      $remi_php56_enabled = '0'
+      $remi_php71_enabled = '1'
+    }
+    else{
+      fail("Class['owncloudstack']: Unsupported PHP version (${::owncloudstack::php_version})")
+    }
+
     #include ::remi
     class { '::remi':
       use_epel           => false,
       remi_enabled       => '1',
-      remi_php56_enabled => '1',
+      remi_php56_enabled => $remi_php56_enabled,
+      remi_php71_enabled => $remi_php71_enabled,
       require            => Package['epel-release'],
     }
 

@@ -18,6 +18,7 @@ $mysql_server_service_restart = true,
 $php_extra_modules = [],
 $libreoffice_pkg_name='libreoffice',
 $owncloud_ssl = false,
+$php_version = '5.6',
 )
 {
 
