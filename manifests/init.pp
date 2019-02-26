@@ -14,8 +14,10 @@ $manage_ntp=true,
 $manage_timezone=true,
 $mysql_override_options = {},
 $mysql_server_version='5.7',
+$mysql_server_service_restart = true,
 $php_extra_modules = [],
 $libreoffice_pkg_name='libreoffice',
+$owncloud_ssl = false,
 )
 {
 
@@ -45,6 +47,10 @@ $libreoffice_pkg_name='libreoffice',
   validate_bool($manage_ntp)
 
   validate_bool($manage_timezone)
+
+  validate_bool($mysql_server_service_restart)
+
+  validate_bool($owncloud_ssl)
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
       if(versioncmp($::operatingsystemmajrelease, '7') == 0){
