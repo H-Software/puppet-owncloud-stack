@@ -96,7 +96,7 @@ class owncloudstack::mysql ()
     service_name     => $::owncloudstack::mysql_server_service_name,
     package_ensure   => 'installed',
     service_enabled  => true,
-    includedir       => $mysql_includedir,
+    includedir       => $::owncloudstack::mysql_includedir,
     restart          => $::owncloudstack::mysql_server_service_restart,
     require          => $::owncloudstack::require_mysql_server,
   }
