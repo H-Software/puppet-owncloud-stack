@@ -13,11 +13,13 @@ $manage_sendmail=true,
 $manage_ntp=true,
 $manage_timezone=true,
 $mysql_override_options = {},
+$mysql_includedir = '/etc/my.cnf.d',
 $mysql_server_version='5.7',
 $mysql_server_service_restart = true,
 $php_extra_modules = [],
 $libreoffice_pkg_name='libreoffice',
 $owncloud_ssl = false,
+$owncloud_package_name = undef,
 $php_version = '5.6',
 )
 {
@@ -82,6 +84,12 @@ $php_version = '5.6',
   }
   else{
     fail("owncloud version ${owncloud_version} not supported")
+  }
+
+  if ($owncloud_package_name == ''){
+    if($owncloud_version == '10'){
+      $owncloud_package_name = 'owncloud-files'
+    }
   }
 
   class { '::owncloudstack::system': }
