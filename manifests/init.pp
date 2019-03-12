@@ -12,6 +12,7 @@ $manage_fail2ban=true,
 $manage_sendmail=true,
 $manage_ntp=true,
 $manage_timezone=true,
+$manage_owncloud_skeleton=false,
 $mysql_override_options = {},
 $mysql_includedir = '/etc/my.cnf.d',
 $mysql_server_version='5.7',
@@ -50,6 +51,8 @@ $php_version = '5.6',
   validate_bool($manage_ntp)
 
   validate_bool($manage_timezone)
+
+  validate_bool($manage_owncloud_skeleton)
 
   validate_bool($mysql_server_service_restart)
 
