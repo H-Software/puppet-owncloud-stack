@@ -20,6 +20,7 @@ $mysql_server_version='5.7',
 $mysql_server_service_restart = true,
 $php_extra_modules = [],
 $libreoffice_pkg_name='libreoffice',
+$libreoffice_pkg_manage=true,
 $owncloud_ssl = false,
 $owncloud_package_name = undef,
 $php_version = '5.6',
@@ -58,6 +59,8 @@ $php_version = '5.6',
   validate_bool($mysql_server_service_restart)
 
   validate_bool($owncloud_ssl)
+
+  validate_bool($libreoffice_pkg_manage)
 
   if ($::operatingsystem =~ /(?i:Centos|RedHat|Scientific|OracleLinux)/) {
       if(versioncmp($::operatingsystemmajrelease, '7') == 0){
