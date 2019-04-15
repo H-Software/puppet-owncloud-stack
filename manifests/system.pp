@@ -168,7 +168,7 @@ class owncloudstack::system ()
 
   }
 
-  if($libreoffice_pkg_manage){
+  if($::owncloudstack::libreoffice_pkg_manage){
     package{ 'office package':
       ensure => installed,
       name   => $::owncloudstack::libreoffice_pkg_name,
