@@ -48,11 +48,11 @@ class owncloudstack::services ()
     subscribe => File['owncloud cron file'],
   }
 
-  $cron_file_owncloud = "*/15  *  *  *  * ${apache_user} php -f /var/www/owncloud/cron.php > /dev/null 2>&1\n"
+  $cron_file_owncloud_content = "*/15  *  *  *  * ${apache_user} php -f ${::owncloudstack::owncloud_cron_file} > /dev/null 2>&1\n"
 
   file { 'owncloud cron file':
     name    => '/etc/cron.d/owncloud',
-    content => $cron_file_owncloud,
+    content => $cron_file_owncloud_content,
     require => Package['cron'],
   }
 

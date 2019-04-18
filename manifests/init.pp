@@ -24,6 +24,7 @@ $libreoffice_pkg_manage=true,
 $owncloud_ssl = false,
 $owncloud_package_name = undef,
 $php_version = '5.6',
+$owncloud_cron_file = '/var/www/owncloud/cron.php',
 )
 {
 
