@@ -13,6 +13,7 @@ $manage_sendmail=true,
 $manage_ntp=true,
 $manage_timezone=true,
 $manage_owncloud_skeleton=false,
+$manage_phpmysql=true,
 $mysql_override_options = {},
 $mysql_includedir = undef,
 $mysql_config_file = '/etc/my.cnf',
@@ -56,6 +57,8 @@ $owncloud_cron_file = '/var/www/owncloud/cron.php',
   validate_bool($manage_timezone)
 
   validate_bool($manage_owncloud_skeleton)
+
+  validate_bool($manage_phpmysql)
 
   validate_bool($mysql_server_service_restart)
 

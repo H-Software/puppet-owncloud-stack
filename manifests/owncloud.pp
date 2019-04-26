@@ -26,7 +26,7 @@ class owncloudstack::owncloud ()
     manage_apache => $::owncloudstack::manage_apache,
     manage_vhost  => $::owncloudstack::manage_vhost,
     manage_skeleton => $::owncloudstack::manage_owncloud_skeleton,
-    #manage_phpmysql => false,
+    manage_phpmysql => $::owncloudstack::manage_phpmysql,
     ssl           => $::owncloudstack::owncloud_ssl,
     #package_name  => $::owncloudstack::owncloud_package_name,
   }
